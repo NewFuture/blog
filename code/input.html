@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://dgonebox7.live.com/cdn/1.7/index.min.css">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width, minimal-ui" />
+    <title>聊天输入框</title>
+</head>
+
+<body>
+
+    <main>
+        <div class="ChatList" style=" text-align:center;background: linear-gradient(red, blue);height: 1234px;color:blanchedalmond">
+            可向上滑动
+        </div>
+    </main>
+
+    <footer class="ChatInput" component>
+        <span class="ChatInput-icon i-pen"></span>
+        <input style="height:30px" class="ChatInput-message" placeholder="输入消息" />
+        <i class="ChatInput-btn i-send"></i>
+    </footer>
+    <script>
+        /**
+        * 系统判断
+        */
+        function is_ios() {
+            return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+        }
+
+        if (is_ios()) {
+            // footer改为absolute
+            var footer = document.querySelector('footer');
+            footer.style.position = "absolute";
+            //定死main中间高度,并让其可滚动
+            var main = document.querySelector('main');
+            main.style.overflowY = "scroll"
+            main.style.overflowScrolling = "touch"
+            main.style.height = (window.innerHeight - footer.clientHeight) + 'px';
+
+            //输入聚焦时滑动到最底部
+            var input = document.getElementsByTagName('input')[0];
+            input.onfocus = () => {
+                setTimeout(() => {
+                    document.body.scrollTo(0, window.innerHeight);
+                }, 250);
+            };
+        }
+
+    </script>
+</body>
+
+</html>
