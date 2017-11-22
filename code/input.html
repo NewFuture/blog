@@ -10,11 +10,8 @@
 </head>
 
 <body>
-
     <main>
-        <div class="ChatList" style=" text-align:center;background: linear-gradient(red, blue);height: 1234px;color:blanchedalmond">
-            可向上滑动
-        </div>
+        <div class="ChatList" style=" text-align:center;background: linear-gradient(red, blue);height: 1500px;color:blanchedalmond">可向上滑动</div>
     </main>
 
     <footer class="ChatInput" component>
@@ -24,13 +21,15 @@
     </footer>
     <script>
         /**
-        * 系统判断
+        * 系统版本
         */
-        function is_ios() {
-            return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+        function ios_version() {
+            var version = navigator.userAgent.toLowerCase().match(/cpu( iphone)? os (.*?) like mac os/);
+            return version && parseInt(version[2].split('_')[0]);
         }
-
-        if (is_ios()) {
+        var version = ios_version();
+        //ios 10以及一下        
+        if (version && version < 11) {
             // footer改为absolute
             var footer = document.querySelector('footer');
             footer.style.position = "absolute";
@@ -40,13 +39,15 @@
             main.style.overflowScrolling = "touch"
             main.style.height = (window.innerHeight - footer.clientHeight) + 'px';
 
-            //输入聚焦时滑动到最底部
-            var input = document.getElementsByTagName('input')[0];
+            // ios 聚焦时滑动到最底部
+            var input = document.querySelector('input');
             input.onfocus = () => {
                 setTimeout(() => {
                     document.body.scrollTo(0, window.innerHeight);
                 }, 250);
             };
+            //显示测试信息
+            input.placeholder += "(IOS" + version + ")";
         }
 
     </script>
