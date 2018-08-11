@@ -5,22 +5,22 @@ url: "https://blog.newfuture.cc/"
 # THEME-SPECIFIC CONFIGURATION
 theme_settings:
   # Meta
-  title: New Future Blog
+  title: Future Blog
   avatar: assets/img/avatar.png
   favicon: assets/favicon.ico
   gravatar: # Email MD5 hash
-  description: "New Future'" # used by search engines
+  description: "Blog of New Future'" # used by search engines
 
   # Header and footer text
-  header_text: >
+ # header_text: >
 
   header_text_feature_image:
   footer_text: >
-   <a class="fa fa-fw fa-edit"></a> with <a class="fa fa-fw fa-heart"></a> by <a href="https://newfuture.cc">NewFuture</a>
+   <a class="fa fa-edit"></a> with <a class="fa fa-heart"></a> by <a href="https://newfuture.cc">NewFuture</a>
 
   # Icons
   rss: false
-  email_address: # Full email address, e.g. "sam@example.com"
+  email_address: "blog@newfuture.cc"# Full email address, e.g. "sam@example.com"
   behance:
   bitbucket:
   dribbble:
@@ -40,6 +40,7 @@ theme_settings:
   twitter:
   wordpress:
   youtube:
+  weibo: LiuFuture
 
   # Scripts
   google_analytics: # Tracking ID, e.g. "UA-000000-01"
@@ -48,15 +49,15 @@ theme_settings:
   search: true # Enable the search feature
 
   # Localization strings
-  str_follow_on: "Follow on"
+  str_follow_on: "关注我 Follow on"
   str_rss_follow: "Follow RSS feed"
-  str_email: "Email"
+  str_email: "发邮件Email"
   str_next_post: "Next post"
   str_previous_post: "Previous post"
-  str_next_page: "Next"
-  str_previous_page: "Prev"
-  str_continue_reading: "Continue reading"
-  str_search_no_results: "No results found."
+  str_next_page: "下一页(Next)"
+  str_previous_page: "上一页(Prev)"
+  str_continue_reading: "查看(Reading)"
+  str_search_no_results: "无相关搜索结果:( <br/> No results found."
 
   # Colours, typography and padding
   # Open the "_sass > base" folder, and open "_variables.scss"

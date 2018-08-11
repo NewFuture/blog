@@ -6,13 +6,6 @@
 </li>
 {% endif %}
 
-{% if site.theme_settings.email_address %}
-<li>
-	<a href="mailto:{{ site.theme_settings.email_address }}" title="{{ site.theme_settings.str_email }}">
-		<i class="fa fa-fw fa-envelope"></i>
-	</a>
-</li>
-{% endif %}
 
 {% if site.theme_settings.behance %}
 <li>
@@ -162,6 +155,23 @@
 <li>
 	<a href="https://www.youtube.com/user/{{ site.theme_settings.youtube }}" title="{{ site.theme_settings.str_follow_on }} YouTube">
 		<i class="fa fa-fw fa-youtube"></i>
+	</a>
+</li>
+{% endif %}
+
+{% if site.theme_settings.weibo %}
+<li>
+	<a href="http://weibo.com/{{ site.theme_settings.weibo }}" title="{{ site.theme_settings.str_follow_on }} Weibo">
+		<i class="fa fa-fw fa-weibo"></i>
+	</a>
+</li>
+{% endif %}
+
+
+{% if site.theme_settings.email_address %}
+<li>
+	<a href="mailto:{{ site.theme_settings.email_address }}" title="{{ site.theme_settings.str_email }}">
+		<i class="fa fa-fw fa-envelope"></i>
 	</a>
 </li>
 {% endif %}

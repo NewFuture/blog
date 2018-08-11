@@ -1,9 +1,11 @@
-{% if site.theme_settings.katex and page.id %}
-<script src="{{ "/assets/js/katex_init.js" | relative_url }}"></script>
-{% endif %}
-
 {% if site.theme_settings.footer_text %}
 <footer class="site-footer">
 	<p class="text">{{ site.theme_settings.footer_text }}</p>
 </footer>
+{% endif %}
+
+{% if site.theme_settings.katex or page.katex and page.id %}
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0-beta/dist/contrib/auto-render.min.js" integrity="sha384-aGfk5kvhIq5x1x5YdvCp4upKZYnA8ckafviDpmWEKp4afOZEqOli7gqSnh8I6enH" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+<script defer src="{{ "/assets/js/katex_init.js" | relative_url }}"></script>
 {% endif %}
