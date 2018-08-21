@@ -7,7 +7,6 @@ theme_settings:
   # Meta
   title: Future Blog
   avatar: assets/img/avatar.png
-  favicon: assets/favicon.ico
   gravatar: # Email MD5 hash
   description: "Blog of New Future'" # used by search engines
 
@@ -16,7 +15,7 @@ theme_settings:
 
   header_text_feature_image:
   footer_text: >
-   <a class="fa fa-edit"></a> with <a class="fa fa-heart"></a> by <a href="https://newfuture.cc">NewFuture</a>
+   <i class="fa fa-edit"></i> with <i class="fa fa-heart"></i> by <a href="https://newfuture.cc">NewFuture</a>
 
   # Icons
   rss: false
@@ -71,12 +70,24 @@ paginate: 8
 paginate_path: "page:num"
 
 # BUILD SETTINGS
+
+collections:
+  posts:
+    output: true
+    permalink: /:title/
+
 markdown: kramdown
+kramdown:
+  input:              GFM
+
 highlighter: rouge
 sass:
   sass_dir: _sass
   style: :compressed
-plugins: [jekyll-paginate]
+
+plugins: 
+- jekyll-paginate
+
 #theme: jekyll-theme-type
 exclude:
   - Gemfile

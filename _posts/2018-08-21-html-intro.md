@@ -1,9 +1,9 @@
 ---
 layout: post
-title: HTML Intro
+title: Intro to HTML
 # feature-img: 
 ---
 
-# HTML Intro 基础介绍
+# HTML 基础介绍
 
 ![](/assets/img/html-intro/html.png)
