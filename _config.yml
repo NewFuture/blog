@@ -20,7 +20,7 @@ theme_settings:
 
   # Icons
   rss: false
-  email_address: "blog@newfuture.cc"# Full email address, e.g. "sam@example.com"
+  email_address: "blog@newfuture.cc" # Full email address, e.g. "sam@example.com"
   behance:
   bitbucket:
   dribbble:
