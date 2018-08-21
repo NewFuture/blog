@@ -27,5 +27,7 @@ HTML5 通常包括两个部分:
 
 ## 参考                   {#reference}
 
+* [HTML（超文本标记语言） | MDN](https://developer.mozilla.org/zh-CN/docs/Web/HTML)
 * [Html5和Html4的区别](https://www.jianshu.com/p/5dbc711331e2)
+* [HTML 教程 | 菜鸟教程](http://www.runoob.com/html/html-tutorial.html)
 * [HTML5 Tutorial](https://www.w3schools.com/html/default.asp)
