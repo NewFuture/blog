@@ -47,6 +47,18 @@ HTML5 通常包括两个部分:
 
 ### 表单标签
 
+* `form`	Defines an HTML form for user input
+* `input`	Defines an input control
+* `textarea`	Defines a multiline input control (text area)
+* `button`	Defines a clickable button
+* `select`	Defines a drop-down list
+* `optgroup`	Defines a group of related options in a drop-down list
+* `option`	Defines an option in a drop-down list
+* `label`	Defines a label for an `input` element
+* `fieldset`	Groups related elements in a form
+* `legend`	Defines a caption for a  `fieldset` element
+* `datalist`	Specifies a list of pre-defined options for input controls
+* `output`	Defines the result of a calculation
 
 ### 图片视频音频
 
