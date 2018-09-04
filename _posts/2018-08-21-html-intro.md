@@ -68,8 +68,15 @@ HTML5 通常包括两个部分:
 
 ## HTML5 通用属性         {#html5}
 
-## HTML5 与 HTML4         {#html5-html4-differences}
+## HTML5 与 HTML4 声明        {#html5-html4-differences}
 
+```html
+<!DOCTYPE html>
+```
+
+```html
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+```
 
 ## 参考                   {#reference}
 

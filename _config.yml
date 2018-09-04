@@ -55,7 +55,7 @@ theme_settings:
   str_previous_post: "Previous post"
   str_next_page: "下一页(Next)"
   str_previous_page: "上一页(Prev)"
-  str_continue_reading: "查看(Reading)"
+  str_continue_reading: "阅读(Reading)"
   str_search_no_results: "无相关搜索结果:( <br/> No results found."
 
   # Colours, typography and padding
