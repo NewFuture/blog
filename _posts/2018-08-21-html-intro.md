@@ -42,28 +42,28 @@ HTML5 通常包括两个部分:
 #### 格式相关
 
 * `a` 超链接
-* ``
+* ` `
 
 
 ### 表单标签
 
-* `form`	Defines an HTML form for user input
-* `input`	Defines an input control
-* `textarea`	Defines a multiline input control (text area)
-* `button`	Defines a clickable button
-* `select`	Defines a drop-down list
-* `optgroup`	Defines a group of related options in a drop-down list
-* `option`	Defines an option in a drop-down list
-* `label`	Defines a label for an `input` element
-* `fieldset`	Groups related elements in a form
-* `legend`	Defines a caption for a  `fieldset` element
-* `datalist`	Specifies a list of pre-defined options for input controls
-* `output`	Defines the result of a calculation
+* `form`	定义表单主体
+* `input`	输入框
+* `label`	设置显示名 `input`(可点击获取焦点)
+* `textarea` 输入文本区域
+* `button`	按钮
+* `select`	下拉菜单配合option使用
+* `option`	select的选项
+* `optgroup` 将option组合
+* `fieldset` 将表单字段组合在一些
+* `legend`  对 `fieldset` 说明
+* `datalist`	datalist 选项
+* `output`	显示结果
 
 ### 图片视频音频
 
 
-### 
+### 其他
 
 
 ## HTML5 通用属性         {#html5}
