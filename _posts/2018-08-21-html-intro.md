@@ -38,6 +38,7 @@ HTML5 通常包括两个部分:
 * `h1`,`h2`,`h3`,`h4`,`h5`,`h6`标题
 * `p` (paragraph) 段落
 * `address` 文档/文章的作者信息
+* `details` > `summary` 详情和摘要(带折叠效果，依赖浏览器实行) 
 
 #### 格式相关
 
@@ -83,5 +84,5 @@ HTML5 通常包括两个部分:
 * [HTML（超文本标记语言）- MDN](https://developer.mozilla.org/zh-CN/docs/Web/HTML)
 * [Html5和Html4的区别 - 简书](https://www.jianshu.com/p/5dbc711331e2)
 * [HTML 教程 - 菜鸟教程](http://www.runoob.com/html/html-tutorial.html)
-* [HTML5 Tutorial - w3schools](https://www.w3schools.com/html/default.asp)
+* [HTML5 Tutorial - w3schools](https://www.w3schools.com/html/)
 * [HTML Tags - w3schools](https://www.w3schools.com/tags/ref_byfunc.asp)
