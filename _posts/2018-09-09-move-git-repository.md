@@ -21,18 +21,19 @@ Git 仓库迁移
 ### 完全同步
 
 1. 添加git源: `git remote add origin [new-git-repository-uri]`
-    * 如果`origin`已被占用可换其他词
-    * `[new-git-repository-uri]` 新的仓库地址(具有写权限)
-2. 推送到远程仓库: `git push --all origin` (`origin与`前一步命名一致)
+    * 如果 **origin** 已被占用可换其他词
+    * **[new-git-repository-uri]** 新的仓库地址(具有写权限)
+2. 推送到远程仓库: `git push --all origin` 
+    * **origin** 与前一步命名一致)
 
 
 ### 上传部分分支
 
 1. 添加git源: `git remote add origin [new-git-repository-uri]`
 2. 推送到远程仓库: `git push origin HEAD:master` 
-    * `origin与`前一步命名一致
-    * `HEAD`指当前分支(branch)如果想上传其它分支，改为对应分支名
-    * `master`远程分支名称
+    * **origin** 与前一步命名一致
+    * **HEAD** 指当前分支(branch)如果想上传其它分支，改为对应分支名
+    * **master** 远程分支名称
 
 
 
