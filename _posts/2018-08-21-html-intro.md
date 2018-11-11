@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Intro to HTML(基础介绍)
+private: true
 # feature-img: 
 ---
 
