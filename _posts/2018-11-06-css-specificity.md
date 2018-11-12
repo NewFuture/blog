@@ -92,6 +92,8 @@ HTML解析成一个DOM (Document Object Model)树,样式表会解析成一个 CS
 
 如果最高权重的仍有，多个根据出现属性确定优先级。
 
+<p data-height="265" data-theme-id="0" data-slug-hash="dQOOdw" data-default-tab="html,result" data-user="newfuture" data-pen-title="CSS 级联权重" class="codepen">示例 <a href="https://codepen.io/newfuture/pen/dQOOdw/">CSS 级联权重</a>.</p>
+
 ### 定义顺序 
 
 * inline
