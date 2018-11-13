@@ -103,10 +103,27 @@ HTML解析成一个DOM (Document Object Model)树,样式表会解析成一个 CS
 
 ## 总结
 
+### 完整优先级判断
+
 属性计算的优先流程(非实际计算过程)
 
 ![](/assets/img/css-specificity/process.png)
 
+### 实践原则
+
+1. 避免使用`#id` 选择器
+    * 避免在CSS中使用
+    * 仅在JS操作相关内容中使用
+2. 慎用`!important`
+    * 共用组件和库中应该避免使用`!important`
+    * 能不用`!important`的则不用`!important`
+    * 使用`!important`:
+        * 无法正常维护的代码项目中
+        * 只能在外层插入样式，不能修改既有任何代码的情况
+        * 功能单一的工具性CSS样式(如控制文本居中`.text-center{text-align:center!important}`);
+3. 善用`[attribute]`和`:pseudo-class`
+    * 尽量利用attribute控制样式(语义一致性)如: `button[disabled]`,`.link:hover`
+4. `inline`一版是JS动态修改样式使用。
 
 ## 参考
 
