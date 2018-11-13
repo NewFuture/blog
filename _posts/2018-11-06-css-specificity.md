@@ -5,7 +5,9 @@ tags:
     - CSS
 ---
 
-## 渲染树(Render Tree)  {#render-tree}
+## 页面样式渲染
+
+### 渲染树(Render Tree)  {#render-tree}
 
 对于一个网页(包括小程序的Page):
 HTML解析成一个DOM (Document Object Model)树,样式表会解析成一个 CSSOM(CSS Object Model)树，
@@ -16,7 +18,7 @@ HTML解析成一个DOM (Document Object Model)树,样式表会解析成一个 CS
 渲染树上的样式即为最终用来渲染呈现的样式(Chrome Computed style)。
 
 
-## 渲染节点     {#select-node-attribute}
+### 渲染节点属性选择    {#select-node-attribute}
 
 * 自定义样式
     * 代码定义
@@ -33,11 +35,8 @@ HTML解析成一个DOM (Document Object Model)树,样式表会解析成一个 CS
 
 ## 样式选择优先级  {#css-specificity}
 
-### important {#import}
 
-`!important`声明的属性具有最高的优先级，除非有多个`!important`时再进行权重比较。
-
-### 样式声明的权重  {#css-specificity-weights}
+### 1样式声明的权重  {#css-specificity-weights}
 
 * 内联样式 
 * 样式选择器样式 (包括默认浏览器默认样式)
@@ -63,7 +62,7 @@ HTML解析成一个DOM (Document Object Model)树,样式表会解析成一个 CS
 
 如果选择器级联操作，计算级联权重
 
-### 级联样式权重 {#css-combinators-weights}
+### 2级联样式权重 {#css-combinators-weights}
 
 前面提到，CSS定义中有3类权重id选择器，class选择器，和标签选择器。
 
@@ -94,12 +93,18 @@ HTML解析成一个DOM (Document Object Model)树,样式表会解析成一个 CS
 
 <p data-height="265" data-theme-id="0" data-slug-hash="dQOOdw" data-default-tab="html,result" data-user="newfuture" data-pen-title="CSS 级联权重" class="codepen">示例 <a href="https://codepen.io/newfuture/pen/dQOOdw/">CSS 级联权重</a>.</p>
 
-### 定义顺序 
+### 3定义顺序 
 
 * inline
 * media query
 * 代码定义或者浏览器默认，以最后出现优先
  
+
+### 4`!important` {#import}
+
+`!important`声明高于所有非`!important`的属性,具有最高的优先级，
+
+多个`!important`属性时通过上述再进行权重比较。
 
 ## 总结
 
