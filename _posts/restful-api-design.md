@@ -65,13 +65,31 @@ POST /gists/:id/forks
 > 2. Required standard headers MAY be accepted as parameters.
 > 3. Required headers with security sensitivity (e.g., Authorization header) MIGHT NOT be appropriate as parameters;
 
+### URL
 
-#### 版本
+格式规范
+根据RFC3986定义，URL是大小写敏感的。所以为了避免歧义，尽量使用小写字母。
+
+RESTful API 应具备良好的可读性，当url中某一个片段（segment）由多个单词组成时，建议使用 **-** 来隔断单词，而不是使用 \_。这主要是因为，浏览器中超链接显示的默认效果是文字并附带下划线，如果API以\_隔断单词，二者会重叠，影响可读性。
+
+### 协议
+使用HTTPs协议还是HTTP协议本身和RESTful API并无关系
+
+提供给用户的API，总是使用HTTPs协议。
+
+### 域名
+API应该放在专有域名下，比如https://api.example.com/v1。也可以简单地把版本放在URL中，比如https://www.example.com/api/v1
+
+### 版本
 * **Path** [Facebook, Microsoft Graph] √
 * header [Github] 
 * query string 
 
 ### 响应
+
+### 数据格式
+
+数据传输量，易读性和解析便利性考虑, **JSON** 优先
 
 #### 参数和字段名称
 
@@ -118,3 +136,4 @@ Content-Type: application/json; charset=utf-8
 * https://martinfowler.com/articles/richardsonMaturityModel.html
 * https://docs.microsoft.com/zh-cn/azure/architecture/best-practices/api-design
 * https://github.com/Microsoft/api-guidelines/blob/master/Guidelines.md
+* https://tools.ietf.org/html/rfc3986
