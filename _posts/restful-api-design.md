@@ -1,4 +1,6 @@
 
+# REST
+
 * 资源(`URL`)
 * 动作(`Method`)
 
@@ -47,17 +49,26 @@ HTTP 请求应是独立的并可按任意顺序发生，因此保留请求之间
 
 ## 资源
 
-所有内容
+每个URI对应一个资源或者资源集合
 
-REST主语，全称应该是资源的表现层状态转移
+`https://{serviceRoot}/{collection}/{id}`
+
+> * {serviceRoot} – the combination of host (site URL) + the root path to the service
+> * {collection} – the name of the collection, unabbreviated, pluralized (无缩写复数)
+> * {id} – the value of the unique id property. When using the "/" pattern this MUST be the **raw string/number/guid** value with no quoting but properly escaped to fit in a URL segment.
+
+### 集合 collection
+
+* collection是一类资源实体的总称
+* collection可以嵌套collection (属性或从属关系)
 
 ### URI常用约定
 
 #### 名词应该使用复数
 所用的名词往往和数据库的表名对应，而数据库的表是一组记录的集合，因此URL中的名词即表示一组资源的**集合**，故URI中的名词要使用复数
-https://api.example.com/v1/students
-https://api.example.com/v1/schools
-https://api.example.com/v1/employees
+* https://api.example.com/v1/students
+* https://api.example.com/v1/schools
+* https://api.example.com/v1/employees
 
 #### URL中不能使用动词
 URI代表着一个资源，是一个实体，应该是名词，而不要把具体的动作放在URL中，对资源的操作应该通过HTTP的动词来实现。
@@ -119,8 +130,9 @@ RESTful API 应具备良好的可读性，当url中某一个片段（segment）�
 
 提供给用户的API，总是使用HTTPs协议。
 
-### 域名
-API应该放在专有域名下，比如https://api.example.com/v1。也可以简单地把版本放在URL中，比如https://www.example.com/api/v1
+### API域名
+* 独立域名 https://api.example.com/ [Facebook, Microsoft Graph,Facebook 几乎所有API开发平台] √
+* 路径 https://www.example.com/api/ (常用于小型项目，前后分离)
 
 ### 版本
 * **Path** [Facebook, Microsoft Graph] √
@@ -155,7 +167,7 @@ API应该放在专有域名下，比如https://api.example.com/v1。也可以简
 | 406 | Not Acceptable |GET|用户请求的格式不可得（比如用户请求JSON格式，但是只有XML格式）。
 | 410 | Gone |GET|用户请求的资源被永久删除，且不会再得到的。
 | 422 | Unprocesable entity |POST/PUT/PATCH|当创建一个对象时，发生一个验证错误。
-| 500 | INTERNAL SERVER ERROR |*|服务器端发生错误，用户将无法判断发出的请求是否成功。
+| 500 | INTERNAL SERVER ERROR | * | 服务器端发生错误，用户将无法判断发出的请求是否成功。
 | 503 | Service Unavailable | * | 服务器临时性出错.
 
 #### 错误
