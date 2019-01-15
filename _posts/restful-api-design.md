@@ -4,6 +4,14 @@
 
 ## REST
 
+REST(Representational State Transfer, 表现层状态转移)
+
+* 用URI来定位具体的资源
+* 用HTTP请求的Content-Type字段来描述资源的表现形式
+* 用HTTP动词来描述对资源的具体操作
+
+### Web API 4境界
+
 * Level 0 - URI (定义一个 URI，所有操作是对此 URI 发出的 POST 请求。)
 * Level 1 - Resources (为各个资源单独创建 URI。)
 * Level 2 - HTTP Verbs (使用 HTTP 方法来定义对资源执行的操作。)
@@ -14,7 +22,9 @@
 所有内容
 
 
-## Method
+## Verb
+
+### Method
 
 HTTP 协议定义了大量为请求赋于语义的方法。 大多数 RESTful Web API 使用的常见 HTTP 方法是：
 
@@ -24,14 +34,20 @@ HTTP 协议定义了大量为请求赋于语义的方法。 大多数 RESTful We
 * PATCH （Update）：只更新服务器上一个资源的一个属性。
 * DELETE （Delete）：删除服务器上的一个资源。
 
-特定请求的影响应取决于资源是集合还是单个子项。 下表汇总了使用电子商务示例的大多数 RESTful 实现所采用的常见约定
+### examples
 
+下表汇总了使用电子商务示例的大多数 RESTful 实现所采用的常见约定
 | **资源** | **POST** | **GET** | **PUT** | **DELETE** |
 | --- | --- | --- | --- | --- |
 | /customers |创建新客户 |检索所有客户 |批量更新客户 |删除所有客户 |
 | /customers/1 |错误 |检索客户 1 的详细信息 |如果客户 1 存在，则更新其详细信息 |删除客户 1 |
 | /customers/1/orders |创建客户 1 的新订单 |检索客户 1 的所有订单 |批量更新客户 1 的订单 |删除客户 1 的所有订单 |
 
+```
+PUT /gists/:id/star
+DELETE /gists/:id/star
+POST /gists/:id/forks
+```
 
 ## practices
 
@@ -49,19 +65,20 @@ HTTP 协议定义了大量为请求赋于语义的方法。 大多数 RESTful We
 > 2. Required standard headers MAY be accepted as parameters.
 > 3. Required headers with security sensitivity (e.g., Authorization header) MIGHT NOT be appropriate as parameters;
 
-#### examples
-
-```
-PUT /gists/:id/star
-DELETE /gists/:id/star
-POST /gists/:id/forks
-```
 
 #### 版本
-* path
-* header
+* **Path** [Facebook, Microsoft Graph] √
+* header [Github] 
+* query string 
 
 ### 响应
+
+#### 参数和字段名称
+
+命名和语言风格习惯有关，流行的主要有两种方式
+
+* lower_case 小写下划线 (Like Github Facebook API)
+* **camelCase** 小写驼峰 (Usually used in Microsoft API) √
 
 #### 状态码
 
@@ -85,14 +102,6 @@ POST /gists/:id/forks
 
 https://github.com/Microsoft/api-guidelines/blob/master/Guidelines.md#errorresponse--object
 
-
-#### 参数和字段名称
-
-命名和语言风格习惯有关，流行的主要有两种方式
-
-* lower_case 小写下划线 (Like Github Facebook API)
-* **camelCase** 小写驼峰 (Usually used in Microsoft API) √
-
 ```HTTP
 GET /customers/3?nameFiled=firstName HTTP/1.1
 ```
@@ -108,3 +117,4 @@ Content-Type: application/json; charset=utf-8
 
 * https://martinfowler.com/articles/richardsonMaturityModel.html
 * https://docs.microsoft.com/zh-cn/azure/architecture/best-practices/api-design
+* https://github.com/Microsoft/api-guidelines/blob/master/Guidelines.md
