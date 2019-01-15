@@ -2,6 +2,7 @@
 * 资源(`URL`)
 * 动作(`Method`)
 
+
 ## REST
 
 REST(Representational State Transfer, 表现层状态转移,主语是Resource)
@@ -34,6 +35,15 @@ REST 描述的三个内容
 * Level 1 - Resources (为各个资源单独创建 URI。)
 * Level 2 - HTTP Verbs (使用 HTTP 方法来定义对资源执行的操作。)
 * Level 3 - Hypermedia Controls (使用超媒体)
+
+
+### REST API 使用无状态
+
+HTTP 请求应是独立的并可按任意顺序发生，因此保留请求之间的瞬时状态信息并不可行。 
+信息的唯一存储位置就在资源内，并且每个请求应是原子操作。 
+此约束可让 Web 服务获得高度可伸缩性，因为无需保留客户端与特定服务器之间的关联。 
+任何服务器可以处理来自任何客户端的任何请求。
+也就是说，其他因素可能会限制可伸缩性。
 
 ## 资源
 
