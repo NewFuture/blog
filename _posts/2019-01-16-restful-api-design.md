@@ -102,16 +102,19 @@ HTTP 协议定义了大量为请求赋于语义的方法。 大多数 RESTful We
 
 ## REST API of Github 
 
+* issues
+
 ```
 GET /issues                                      列出所有的 issue
-GET /orgs/:org/issues                            列出某个项目的 issue
+GET /orgs/:org/issues                            列出某个组织的 issue
 GET /repos/:owner/:repo/issues/:number           获取某个项目的某个 issue
 POST /repos/:owner/:repo/issues                  为某个项目创建 issue
 PATCH /repos/:owner/:repo/issues/:number         修改某个 issue
 PUT /repos/:owner/:repo/issues/:number/lock      锁住某个 issue
-DELETE /repos/:owner/:repo/issues/:number/lock   接收某个 issue
+DELETE /repos/:owner/:repo/issues/:number/lock   删除某个 issue
 ```
 
+* star
 ```
 PUT /gists/:id/star
 DELETE /gists/:id/star
