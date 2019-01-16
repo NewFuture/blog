@@ -193,11 +193,11 @@ RESTful API 应具备良好的可读性，当url中某一个片段（segment）�
 
 https://github.com/Microsoft/api-guidelines/blob/master/Guidelines.md#errorresponse--object
 
-```HTTP
+```
 GET /customers/3?nameFiled=firstName HTTP/1.1
 ```
 
-```HTTP
+```
 HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
 
@@ -206,8 +206,10 @@ Content-Type: application/json; charset=utf-8
 
 ## References
 
-* https://martinfowler.com/articles/richardsonMaturityModel.html
-* https://docs.microsoft.com/zh-cn/azure/architecture/best-practices/api-design
-* https://github.com/Microsoft/api-guidelines/blob/master/Guidelines.md
-* https://tools.ietf.org/html/rfc3986
-* https://cizixs.com/2016/12/12/restful-api-design-guide/
+* <https://martinfowler.com/articles/richardsonMaturityModel.html>
+* <https://docs.microsoft.com/zh-cn/azure/architecture/best-practices/api-design>
+* <https://github.com/Microsoft/api-guidelines/blob/master/Guidelines.md>
+* <https://tools.ietf.org/html/rfc3986>
+* <https://cizixs.com/2016/12/12/restful-api-design-guide/>
+* <https://graphql.org>
+
