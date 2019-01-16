@@ -64,7 +64,7 @@ HTTP 请求应是独立的并可按任意顺序发生，因此保留请求之间
 ### 集合 collection
 
 * collection是一类资源实体的总称
-* collection可以嵌套collection (属性或从属关系)
+* collection内可以嵌套collection (属性或从属关系)
 
 ### URI常用约定
 
@@ -99,6 +99,18 @@ HTTP 协议定义了大量为请求赋于语义的方法。 大多数 RESTful We
 | /customers |创建新客户 |检索所有客户 |批量更新客户 |删除所有客户 |
 | /customers/1 |错误 |检索客户 1 的详细信息 |如果客户 1 存在，则更新其详细信息 |删除客户 1 |
 | /customers/1/orders |创建客户 1 的新订单 |检索客户 1 的所有订单 |批量更新客户 1 的订单 |删除客户 1 的所有订单 |
+
+## REST API of Github 
+
+```
+GET /issues                                      列出所有的 issue
+GET /orgs/:org/issues                            列出某个项目的 issue
+GET /repos/:owner/:repo/issues/:number           获取某个项目的某个 issue
+POST /repos/:owner/:repo/issues                  为某个项目创建 issue
+PATCH /repos/:owner/:repo/issues/:number         修改某个 issue
+PUT /repos/:owner/:repo/issues/:number/lock      锁住某个 issue
+DELETE /repos/:owner/:repo/issues/:number/lock   接收某个 issue
+```
 
 ```
 PUT /gists/:id/star
@@ -162,14 +174,14 @@ RESTful API 应具备良好的可读性，当url中某一个片段（segment）�
 |:---:|:---|:---|:--- |
 | 200 | OK |GET|服务器成功返回用户请求的数据，该操作是幂等的（Idempotent）。
 | 201 | CREATED |POST/PUT/PATCH|用户新建或修改数据成功。
-| 202 | Accepted |*|表示一个请求已经进入后台排队（异步任务）
-| 204 | NO CONTENT |DELETE|用户删除数据成功。
+| 202 | Accepted | * |表示一个请求已经进入后台排队（异步任务）
+| 204 | NO CONTENT |DELETE|  用户删除数据成功。
 | 400 | INVALID REQUEST |POST/PUT/PATCH|用户发出的请求有错误，服务器没有进行新建或修改数据的操作，该操作是幂等的。
-| 401 | Unauthorized |*|表示用户没有权限（令牌、用户名、密码错误）。
-| 403 | Forbidden |*|表示用户得到授权（与401错误相对），但是访问是被禁止的。
-| 404 | NOT FOUND |*|用户发出的请求针对的是不存在的记录，服务器没有进行操作，该操作是幂等的。
-| 406 | Not Acceptable |GET|用户请求的格式不可得（比如用户请求JSON格式，但是只有XML格式）。
-| 410 | Gone |GET|用户请求的资源被永久删除，且不会再得到的。
+| 401 | Unauthorized | * |表示用户没有权限（令牌、用户名、密码错误）。
+| 403 | Forbidden |* | 表示用户得到授权（与401错误相对），但是访问是被禁止的。
+| 404 | NOT FOUND | * | 用户发出的请求针对的是不存在的记录，服务器没有进行操作，该操作是幂等的。
+| 406 | Not Acceptable |GET | 用户请求的格式不可得（比如用户请求JSON格式，但是只有XML格式）。
+| 410 | Gone | GET | 用户请求的资源被永久删除，且不会再得到的。
 | 422 | Unprocesable entity |POST/PUT/PATCH|当创建一个对象时，发生一个验证错误。
 | 500 | INTERNAL SERVER ERROR | * | 服务器端发生错误，用户将无法判断发出的请求是否成功。
 | 503 | Service Unavailable | * | 服务器临时性出错.
@@ -195,3 +207,4 @@ Content-Type: application/json; charset=utf-8
 * https://docs.microsoft.com/zh-cn/azure/architecture/best-practices/api-design
 * https://github.com/Microsoft/api-guidelines/blob/master/Guidelines.md
 * https://tools.ietf.org/html/rfc3986
+* https://cizixs.com/2016/12/12/restful-api-design-guide/
