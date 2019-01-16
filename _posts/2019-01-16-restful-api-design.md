@@ -1,5 +1,9 @@
-
-# REST
+---
+layout: post
+title: restful-api-design (restful api 设计)
+tags:
+    - API
+---
 
 * 资源(`URL`)
 * 动作(`Method`)
