@@ -137,6 +137,17 @@ POST /gists/:id/forks
 > 2. Required standard headers MAY be accepted as parameters.
 > 3. Required headers with security sensitivity (e.g., Authorization header) MIGHT NOT be appropriate as parameters;
 
+```
+GET /customers/3?nameFiled=firstName HTTP/1.1
+```
+
+```
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+
+{"id":3,"firstName":"Contoso","address":"1 Microsoft Way Redmond WA 98053"}
+```
+
 ### URL
 
 格式规范
@@ -193,16 +204,6 @@ RESTful API 应具备良好的可读性，当url中某一个片段（segment）�
 
 https://github.com/Microsoft/api-guidelines/blob/master/Guidelines.md#errorresponse--object
 
-```
-GET /customers/3?nameFiled=firstName HTTP/1.1
-```
-
-```
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8
-
-{"id":3,"firstName":"Contoso","address":"1 Microsoft Way Redmond WA 98053"}
-```
 
 ## References
 
