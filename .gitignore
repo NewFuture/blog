@@ -86,3 +86,6 @@ $RECYCLE.BIN/
 
 .sass-cache/
 .Trash-0/
+
+_site/
+.jekyll-cache/
