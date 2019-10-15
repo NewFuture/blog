@@ -283,6 +283,8 @@ miniprogram_npm
 - 及时更新和是的 npm
 - 合理分配样式文件
 
-## 实际效果
+## 实际应用
 
-将一个 2000KB 的小程序优化到 620KB,下载时间从 2.4s 下降到 0.8s。
+将一个 2MB 的小程序优化到 620KB,下载时间从 接近2.4s 下降到 0.8s左右。
+
+![](/assets/img/reduce-miniprogram-package-size/download-time.jpg)
