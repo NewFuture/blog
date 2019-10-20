@@ -2,7 +2,7 @@
 layout: post
 title: Reduce MiniProgram Package Size (微信小程序包体积优化)
 tags:
-  - MiniProgam
+  - MiniProgram
   - Front-End
 ---
 
