@@ -1,9 +1,9 @@
-.site-header {
+// 网站顶部
+body > header {
   @extend %padding-small;
   background: $brand-color;
   border-bottom: 1px solid $border-color;
   display: inline-block;
-  float: left;
   width: 100%;
 
   a {
@@ -26,7 +26,7 @@
     line-height: 1.5;
   }
 
-  .site-nav {
+  nav {
     ul {
       margin: 0;
       padding: 0;
@@ -51,39 +51,40 @@
     }
   }
 
-    /* --- Search form --- */
-    form {
-        border: 0;
-        border-bottom: 2px solid $search-color;
-        outline: 0;
+  /* --- Search form --- */
+  form {
+    border: 0;
+    border-bottom: 2px solid $search-color;
+    outline: 0;
 
-        *:focus {
-            outline: none;
-        }
-
-        input{
-            &[type=text] {
-                box-sizing: border-box;
-                border: 0;
-                outline: 0;
-                color: $search-color;
-            }
-
-            &::-moz-placeholder {
-                color: $search-color;
-                opacity: 1;
-            }
-
-            &:-ms-input-placeholder, &::-webkit-input-placeholder {
-                color: $search-color;
-            }
-        }
-
-        button {
-           border: none;
-           font-size: 0.9em;
-           background-color: $brand-color;
-           color: $search-color;
-        }
+    *:focus {
+      outline: none;
     }
+
+    input {
+      &[type="text"] {
+        box-sizing: border-box;
+        border: 0;
+        outline: 0;
+        color: $search-color;
+      }
+
+      &::-moz-placeholder {
+        color: $search-color;
+        opacity: 1;
+      }
+
+      &:-ms-input-placeholder,
+      &::-webkit-input-placeholder {
+        color: $search-color;
+      }
+    }
+
+    button {
+      border: none;
+      font-size: 0.9em;
+      background-color: $brand-color;
+      color: $search-color;
+    }
+  }
 }

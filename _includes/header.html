@@ -1,4 +1,4 @@
-<header class="site-header">
+<header id="top">
 	<div class="branding">
 		{% if site.theme_settings.gravatar %}
 		<a href="{{ site.baseurl }}/">
@@ -13,7 +13,7 @@
 			<a href="{{ site.baseurl }}/">{{ site.theme_settings.title }}</a>
 		</h1>
 	</div>
-	<nav class="site-nav">
+	<nav>
 		<ul>
 			{% for page in site.pages %}
 			{% if page.title and page.hide != true %}
@@ -40,5 +40,4 @@
             {% endif %}
 		</ul>
 	</nav>
-    
 </header>

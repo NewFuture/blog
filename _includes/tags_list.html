@@ -1,9 +1,7 @@
-{% if include.tag_count > 0 %}
-<footer>
-  <div class="tags">
-    {% for tag in include.tags %}
-    <a class="tag" href="{{site.baseurl}}/tags#{{tag}}">#{{tag}}</a>
-    {% endfor %}
-  </div>
-</footer>
+{% if include.tags.size > 0 %}
+<div class="tags">
+  {% for tag in include.tags %}
+  <a class="tag" href="{{ site.baseurl }}/tags#{{ tag }}">#{{ tag }}</a>
+  {% endfor %}
+</div>
 {% endif %}
