@@ -1,53 +1,54 @@
 // 网站顶部
 body > header {
-  @extend %padding-small;
+  padding: 0.3rem;
   background: $brand-color;
-  border-bottom: 1px solid $border-color;
-  display: inline-block;
+  background: linear-gradient(
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0.98) 25%,
+    rgba(255, 255, 255, 0.9) 50%,
+    rgba(255, 255, 255, 0.7) 70%,
+    rgba(255, 255, 255, 0.2) 100%
+  );
   width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  // 大屏吸顶
+  @media screen and (min-width: 960px) {
+    position: sticky;
+    top: 0;
+  }
+
+  .avatar {
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+    vertical-align: middle;
+  }
+
+  .site-title {
+    font-weight: bold;
+    font-size: 1rem;
+    line-height: 2rem;
+    height: 2rem;
+  }
 
   a {
     color: $header-link-color;
   }
 
-  .avatar {
-    height: 2em;
-    width: 2em;
-    float: left;
-    margin-top: -3px;
-    border-radius: 0.2em;
-    margin-right: 1em;
-  }
-
-  .site-title {
-    float: left;
-    font-weight: bold;
-    font-size: 1em;
-    line-height: 1.5;
-  }
-
-  nav {
+  & > nav {
     ul {
       margin: 0;
       padding: 0;
       list-style: none;
-      line-height: 1.5;
-      float: right;
+      height: 100%;
       text-align: right;
+      display: flex;
+      align-items: center;
     }
     li {
-      display: inline;
-      float: left;
       margin-right: 0.4em;
-    }
-    @media (max-width: 679px) {
-      ul {
-        display: inline-block;
-        float: left;
-        padding-top: $padding-small;
-        text-align: left;
-        width: 100%;
-      }
     }
   }
 
@@ -61,12 +62,24 @@ body > header {
       outline: none;
     }
 
+    //小屏不显示输入框
+    @media screen and (max-width: 640px) {
+      border-bottom: none;
+      input {
+        display: none;
+      }
+    }
+
     input {
       &[type="text"] {
         box-sizing: border-box;
         border: 0;
         outline: 0;
         color: $search-color;
+        width: 12rem;
+        &:focus {
+          width: 38vw;
+        }
       }
 
       &::-moz-placeholder {

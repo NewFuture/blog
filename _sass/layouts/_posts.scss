@@ -68,8 +68,9 @@ article {
     padding-top: 1em;
     ul {
       position: sticky;
-      top: 1em;
-      font-size: 0.9rem;
+      top: 3.5rem;
+      font-size: 0.9em;
+      // 目录标题链接
       & > li {
         line-height: 2em;
         list-style: none;
@@ -112,7 +113,7 @@ article {
       }
     }
   }
-  
+
   @media (max-width: 1366px) {
     article {
       padding-left: 5%;
