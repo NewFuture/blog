@@ -1,54 +1,51 @@
 main {
-  padding: 0 10%;
+  // padding: 0 10%;
   width: 100%;
-  // display: flex;
-}
 
-// 文章顶部
-main > header {
-  margin-bottom: 6%;
-  text-align: center;
+  // 文章顶部
+  & > header {
+    margin-bottom: 6%;
+    text-align: center;
 
-  & > h1 {
-    // title
-    margin: 0;
-  }
-  & > h2 {
-    // subtitle
-    font-size: 1.45em;
-    font-weight: normal;
-    margin: 0;
-  }
-  // 文章和作者信息
-  address {
-    color: rgba($text-color, 0.5);
-    font-size: 0.9em;
-    letter-spacing: 0.1em;
-    margin: 0;
-  }
-}
-
-article {
-  border-bottom: 1px solid $border-color;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-
-  aside {
-    position: sticky;
-    top: 1em;
-    width: 18%;
-    ul>li{
-      list-style: none;
-      color: gray;
-      overflow: hidden;
-      width: 100%;
-      
+    & > h1 {
+      // 文章标题 title
+      margin: 0;
+    }
+    & > h2 {
+      // 文章子标题 subtitle
+      font-size: 1.45em;
+      font-weight: normal;
+      margin: 0;
+    }
+    // 文章和作者信息
+    address {
+      color: rgba($text-color, 0.5);
+      font-size: 0.9em;
+      letter-spacing: 0.1em;
+      margin: 0;
     }
   }
+
+  // 文章主题
+  article {
+    border-bottom: 1px solid $border-color;
+    width: 100%;
+
+    a {
+      @extend .body-link;
+    }
+  }
+}
+
+// 文章主题
+article {
+  padding-left: 10%;
+  display: flex;
+  justify-content: space-around;
+
   // 内容区
   & > section {
-    width: 80%;
+    width: 70%;
     & > :last-child {
       margin-bottom: 0;
     }
@@ -64,8 +61,28 @@ article {
     }
   }
 
-  a {
-    @extend .body-link;
+  // 文章侧边栏
+  & > aside {
+    max-width: 20%;
+    flex-grow: 1;
+    padding-top: 1em;
+    ul {
+      position: sticky;
+      top: 1em;
+      font-size: 0.9rem;
+      & > li {
+        line-height: 2em;
+        list-style: none;
+        color: gray;
+        width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        a {
+          color: inherit;
+        }
+      }
+    }
   }
 }
 
@@ -82,5 +99,58 @@ article {
   }
   section {
     @extend %padding-regular;
+  }
+}
+
+@media screen {
+  // 超大屏幕
+  @media (min-width: 2048px) {
+    article {
+      padding-left: 15%;
+      & > section {
+        width: 70%;
+      }
+    }
+  }
+  
+  @media (max-width: 1366px) {
+    article {
+      padding-left: 5%;
+      & > section {
+        width: 73%;
+        // @media (max-width: 640px) {
+        //   width: 90%;
+        // }
+      }
+    }
+  }
+  @media (max-width: 1080px) {
+    article {
+      flex-direction: row-reverse;
+      padding-left: 1%;
+      padding-right: 1%;
+      & > section {
+        width: 78%;
+        // @media (max-width: 640px) {
+        //   width: 90%;
+        // }
+      }
+    }
+  }
+
+  // 小于960宽带隐藏 侧边栏
+  @media (max-width: 960px) {
+    article {
+      padding-left: 0;
+      & > section {
+        width: 85%;
+        @media (max-width: 640px) {
+          width: 90%;
+        }
+      }
+      & > aside {
+        display: none;
+      }
+    }
   }
 }
