@@ -19,7 +19,7 @@ layout: default
         <h2 class="post-title">
           {{ post.title }}{% if post.subtitle %} ({{ post.subtitle }}){% endif %}
         </h2>
-        <div class="post-content-preview">
+        <div class="post-content">
           {{ post.content | strip_html | truncate: 200 }}
         </div>
       </a>
