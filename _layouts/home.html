@@ -15,15 +15,10 @@ layout: default
   <div class="posts">
     {% for post in paginator.posts %} {% unless post.private %}
     <section>
-      <a href="{{ post.url | relative_url }}">
-        <h1 class="post-title">
-          {{ post.title }}
-        </h1>
-        {% if post.subtitle %}
-        <h2 class="post-subtitle">
-          {{ post.subtitle }}
+      <a href="{{ post.url | relative_url }}">      
+        <h2 class="post-title">
+          {{ post.title }}{% if post.subtitle %} ({{ post.subtitle }}){% endif %}
         </h2>
-        {% endif %}
         <div class="post-content-preview">
           {{ post.content | strip_html | truncate: 200 }}
         </div>

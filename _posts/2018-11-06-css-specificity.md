@@ -1,6 +1,7 @@
 ---
 layout: post
-title: CSS Specificity (CSS 优先级)
+title: CSS Specificity
+subtitle: 层叠样式表优先级
 tags:
     - CSS
 ---

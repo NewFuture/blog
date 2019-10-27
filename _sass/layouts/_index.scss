@@ -17,31 +17,34 @@
 }
 // Post listing
 .posts {
-  .post-teaser {
+  section {
     @extend %padding-regular;
     width: 100%;
     margin-bottom: 0;
     display: inline-block;
     background-size: $feature-image-size;
     border-bottom: 1px solid $border-color;
-    p a {
-      @extend .body-link;
+    .post-title{
+      font-size: 1.5rem;
+    }
+    .post-content{
+      color: $text-color;
     }
   }
-  .excerpt {
+  .meta {
     margin-top: 1em;
   }
 }
 // Pagination
-.pagination .button {
-  margin: 0 1.5em;
-  i {
-    vertical-align: middle;
-  }
-}
 .pagination {
   padding: $padding-small $padding-large 0 $padding-large;
   text-align: center;
+  .button {
+    margin: 0 1.5em;
+    i {
+      vertical-align: middle;
+    }
+  }
   @media (max-width: 600px) {
     padding: $padding-small;
   }

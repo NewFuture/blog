@@ -1,7 +1,8 @@
 ---
 layout: post
-title: Git Repository Migration(代码仓库迁移)
-feature-img: /assets/img/move-git-repository/vstf_git.png
+title: Git Repository Migration
+subtitle: 代码仓库完整迁移
+img: /assets/img/move-git-repository/vstf_git.png
 tags:
     - Git
 ---
