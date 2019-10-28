@@ -24,7 +24,8 @@ layout: default
         </div>
       </a>
       <p class="meta">
-        {{ post.date | date: "%B %-d, %Y" }}
+        <span class="date">{{ post.date | date: "%Y-%m-%d" }}</span>
+        <span class="tag">{{ post.tags | join: ", " }}</span>
       </p>
     </section>
 
