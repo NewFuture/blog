@@ -3,7 +3,7 @@ layout: post
 title: This Blog Website design
 subtitle: 本博客网站设计
 img: /assets/img/blog-design/joanna-kosinska.jpg
-private: true
+private: false
 tags:
   - Jekyll
   - Front-End
@@ -41,6 +41,7 @@ body
 * 🔘 responsive fonts size 响应式字体
 * 🔘 code style 代码格式
 * 🔘 code reference 代码引用
+* 🔘 comments 评论
 
 
 
