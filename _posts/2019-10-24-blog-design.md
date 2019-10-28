@@ -12,9 +12,9 @@ tags:
 
 ```
 body
-├─ header
+├─ nav
 │  ├─ a.brand
-│  └─ nav
+│  └─ ul
 │
 ├─ main
 │  ├─ header

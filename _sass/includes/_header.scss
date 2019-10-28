@@ -1,5 +1,5 @@
 // 网站顶部
-body > header {
+body > nav {
   padding: 0.3rem;
   background: $brand-color;
   background: linear-gradient(
@@ -24,6 +24,7 @@ body > header {
     width: 2rem;
     border-radius: 50%;
     vertical-align: middle;
+    outline: none;
   }
 
   .site-title {
@@ -31,73 +32,73 @@ body > header {
     font-size: 1rem;
     line-height: 2rem;
     height: 2rem;
+    outline: none;
   }
 
   a {
+    outline: none;
     color: $header-link-color;
   }
 
-  & > nav {
-    ul {
-      margin: 0;
-      padding: 0;
-      list-style: none;
-      height: 100%;
-      text-align: right;
-      display: flex;
-      align-items: center;
-    }
-    li {
-      margin-right: 0.4em;
+  & > ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    height: 100%;
+    text-align: right;
+    display: flex;
+    align-items: center;
+  }
+  li {
+    margin-right: 0.4em;
+  }
+}
+
+/* --- Search form --- */
+form {
+  border: 0;
+  border-bottom: 2px solid $search-color;
+  outline: 0;
+
+  *:focus {
+    outline: none;
+  }
+
+  //小屏不显示输入框
+  @media screen and (max-width: 640px) {
+    border-bottom: none;
+    input {
+      display: none;
     }
   }
 
-  /* --- Search form --- */
-  form {
-    border: 0;
-    border-bottom: 2px solid $search-color;
-    outline: 0;
-
-    *:focus {
-      outline: none;
-    }
-
-    //小屏不显示输入框
-    @media screen and (max-width: 640px) {
-      border-bottom: none;
-      input {
-        display: none;
+  input {
+    &[type="text"] {
+      box-sizing: border-box;
+      border: 0;
+      outline: 0;
+      color: $search-color;
+      width: 12rem;
+      &:focus {
+        width: 38vw;
       }
     }
 
-    input {
-      &[type="text"] {
-        box-sizing: border-box;
-        border: 0;
-        outline: 0;
-        color: $search-color;
-        width: 12rem;
-        &:focus {
-          width: 38vw;
-        }
-      }
-
-      &::-moz-placeholder {
-        color: $search-color;
-        opacity: 1;
-      }
-
-      &:-ms-input-placeholder,
-      &::-webkit-input-placeholder {
-        color: $search-color;
-      }
+    &::-moz-placeholder {
+      color: $search-color;
+      opacity: 1;
     }
 
-    button {
-      border: none;
-      font-size: 0.9em;
-      background-color: $brand-color;
+    &:-ms-input-placeholder,
+    &::-webkit-input-placeholder {
       color: $search-color;
     }
+  }
+
+  button {
+    border: none;
+    font-size: 0.9em;
+    background-color: $brand-color;
+    color: $search-color;
   }
 }
