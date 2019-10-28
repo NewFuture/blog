@@ -2,6 +2,7 @@
 layout: post
 title: CSS Specificity
 subtitle: 层叠样式表优先级
+img: /assets/img/css-specificity/cover-pankaj-patel.jfif
 tags:
     - CSS
 ---

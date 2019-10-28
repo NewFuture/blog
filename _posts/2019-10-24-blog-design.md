@@ -2,13 +2,14 @@
 layout: post
 title: This Blog Website design
 subtitle: 本博客网站设计
+img: /assets/img/blog-design/joanna-kosinska.jpg
 private: true
 tags:
   - Jekyll
   - Front-End
 ---
 
-## 文章页面结构 Page Structure {#page-structure}
+## 页面结构 Page Structure {#page-structure}
 
 ```
 body
