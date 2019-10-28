@@ -2,7 +2,7 @@
 layout: post
 title: Git Repository Migration
 subtitle: 代码仓库完整迁移
-img: /assets/img/move-git-repository/vstf_git.png
+img: /assets/img/move-git-repository/yancy-min-git_2048x1152.jpg
 tags:
     - Git
 ---

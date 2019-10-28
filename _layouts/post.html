@@ -2,7 +2,7 @@
 layout: default
 ---
 
-<header style="background-image: url('{{ page.img }}')">
+<header {% if page.img %}class="has-image" style="background-image: url('{{ page.img }}')" {% endif %}>
   <h1>{{ page.title }}</h1>
   {% if page.subtitle %}<h2>{{ page.subtitle }}</h2>{% endif %}
   <address>
@@ -10,7 +10,7 @@ layout: default
     {% if page.author %} - {{ page.author }}{% endif %}
   </address>
 </header>
-<article {% if page.img %}class="feature-image" {% endif %}>
+<article>
   <section>{% include anchor.html html=content h_max=4 beforeHeading=true %}</section>
   <aside>{% include toc.html html=content h_max=3%}</aside>
 </article>

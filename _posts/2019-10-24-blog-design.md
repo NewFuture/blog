@@ -15,7 +15,7 @@ body
 ├─ header
 │  ├─ a.brand
 │  └─ nav
-|
+│
 ├─ main
 │  ├─ header
 │  │    ├─ h1
@@ -24,7 +24,7 @@ body
 │  │    ├─ section
 │  │    └─ aside
 │  └─ footer
-|
+│
 └─ footer
 
 ```
@@ -36,7 +36,7 @@ body
   * ✔ responsive
 * ✔ header nav bar 顶部导航
   * ✔ responsive
-* 🔘 feature image 封面图
+* ✔ feature images 封面图
 * 🔘 responsive fonts size 响应式字体
 * 🔘 code style 代码格式
 * 🔘 code reference 代码引用

@@ -87,19 +87,23 @@ article {
   }
 }
 
-.feature-image {
-  padding: 0%;
-  header {
-    color: $feature-image-text-color;
-    background-size: $feature-image-size;
-    margin-bottom: 0;
-    padding: $padding-large/2.5 $padding-large;
-    .meta {
-      color: rgba($feature-image-text-color, 0.7);
-    }
+header.has-image {
+  color: $feature-image-text-color;
+  background: no-repeat center center;
+  // background-color: gray;
+  background-attachment: scroll;
+  -webkit-background-size: $feature-image-size;
+  -moz-background-size: $feature-image-size;
+  -o-background-size: $feature-image-size;
+  background-size: $feature-image-size;
+  margin-bottom: 1em;
+  padding: $padding-large 0;
+  address {
+    margin-top:1em;
+    color: rgba($feature-image-text-color, 0.9);
   }
-  section {
-    @extend %padding-regular;
+  &>*{
+    text-shadow: 0 0 0.2em #000,0 0 0.3em gray;
   }
 }
 
