@@ -18,23 +18,26 @@
 // Post listing
 .posts {
   section {
-    @extend %padding-regular;
+    padding: 1.5em 10%;
+    @media screen and (max-width:1024px) {
+      padding: 1em 5%
+    }
     width: 100%;
     margin-bottom: 0;
     display: inline-block;
     background-size: $feature-image-size;
     border-bottom: 1px solid $border-color;
-    .post-title{
+    .post-title {
       font-size: 1.5rem;
     }
-    .post-content{
+    .post-content {
       color: $text-color;
     }
   }
   .meta {
-    margin-top: .8em;
+    margin-top: 0.8em;
     color: gray;
-    font-size: .8rem;
+    font-size: 0.8rem;
   }
 }
 // Pagination

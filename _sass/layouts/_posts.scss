@@ -4,16 +4,20 @@ main {
 
   // 文章顶部
   & > header {
-    margin-bottom: 6%;
+    font-size: 1.2em;
+    margin: 1em 0 3em;
     text-align: center;
 
+    @media screen and (max-width: 640px) {
+      font-size: 1.05em;
+    }
     & > h1 {
       // 文章标题 title
       margin: 0;
     }
     & > h2 {
       // 文章子标题 subtitle
-      font-size: 1.45em;
+      // font-size: 1.45em;
       font-weight: normal;
       margin: 0;
     }

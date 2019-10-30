@@ -1,6 +1,13 @@
 // 网站顶部
 body > nav {
-  padding: 0.3rem;
+  padding: 0.5rem 1.5rem;
+  //小屏不显示输入框
+  @media screen and (max-width: 640px) {
+    padding: 0.5rem;
+  }
+  @media screen and (min-width: 1366px) {
+    padding: 0.6rem 2%;
+  }
   background: $brand-color;
   background: linear-gradient(
     rgba(255, 255, 255, 1) 0%,

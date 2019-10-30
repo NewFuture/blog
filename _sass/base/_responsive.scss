@@ -1,5 +1,25 @@
-html{
-    @media screen {
-        font-size: 16px;
+@media screen {
+  html {
+    @media (max-width: 340px) {
+      font-size: 14px;
     }
+    @media (min-width: 340px) {
+      font-size: 16px;
+    }
+    @media (min-width: 768px) {
+      font-size: 18px;
+    }
+    @media (min-width: 1366px) {
+      font-size: 20px;
+      font-size: calc(12px + .8vw);
+    }
+    @media (min-width: 2048px) {
+      font-size: 26px;
+      font-size: calc(16px + 0.5vw);
+    }
+  }
+}
+
+body {
+  min-width: 300px;
 }
