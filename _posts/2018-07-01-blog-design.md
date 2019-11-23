@@ -19,7 +19,7 @@ tags:
   * ✔ responsive
 * ✔ feature images 封面图
 * ✔ responsive fonts size 响应式字体
-* 🔘 code style 代码格式
+* ✔ code style 代码格式
 * 🔘 code reference 代码引用
 * 🔘 comments 评论
 

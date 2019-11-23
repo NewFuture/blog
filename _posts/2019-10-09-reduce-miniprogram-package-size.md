@@ -48,9 +48,8 @@ Project
 |   ├─ img/   【图片资源文件】
 |   └─ ...其他
 └─ dist/ 【调试和打包输出目录】
-
 ```
-
+ 
 ## 图片资源文件
 
 图片资源通常最可能成为小程序体积增长的原因。基本原则是`尽量少尽量小`。
@@ -75,7 +74,8 @@ Project
 
 比如这两幅图片(都已经无损压缩过)
 
-<img width="40rpx" src="https://avatars2.githubusercontent.com/u/6290356?s=400"/><img width="40rpx" src="https://avatars2.githubusercontent.com/u/6290356?s=80"/>
+<img class="left" width="40rpx" src="https://avatars2.githubusercontent.com/u/6290356?s=400"/>
+<img class="right" width="40rpx" src="https://avatars2.githubusercontent.com/u/6290356?s=80"/>
 
 > 左图 16.4KB(尺寸 400px\*400px)
 > 右图 4.6KB(尺寸 80px\*80px)
