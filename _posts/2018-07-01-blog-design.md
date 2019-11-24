@@ -41,7 +41,6 @@ body
 │  └─ footer
 │
 └─ footer
-
 ```
 
 
