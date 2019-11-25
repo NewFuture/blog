@@ -12,7 +12,12 @@ tags:
 
 ### 预渲染
 
-> 预渲染是提前将静态页面内容进行渲染，用来优化页面响应，SEO 以及生成静态页面.
+> 预渲染(`pre-render`)是提前将静态页面内容进行渲染，用来优化页面响应，SEO 以及生成静态页面.
+
+流行的渲染工具(基于无 puppeteer 浏览器实现)
+
+- [prerender-spa-plugin](https://github.com/chrisvfritz/prerender-spa-plugin) webpack 插件
+- [react-snap](https://github.com/stereobooster/react-snap) 命令行工具
 
 ### 单页应用渲染过程 {#spa-page-render}
 
@@ -91,13 +96,41 @@ new Vue({ el: "#app", render: h => h(App) });
 | js 下载   | 1420ms (并行最长) | 2075ms                        |
 | 图片下载  | 623ms             | 1260ms<br>(无预渲染为 2698ms) |
 
-有预加载时，大概0.6s左右页面开始渲染，看到界面，1.2s左右能看到图片
-无预加载时，大概2s左右开始渲染页面，2.7s左右看到图片(忽略了js执行时间，实际更长)
+有预加载时，大概 0.6s 左右页面开始渲染，看到界面，1.2s 左右能看到图片.
+
+无预加载时，大概 2s 左右开始渲染页面，2.7s 左右看到图片(忽略了 js 执行时间，实际更长)
 
 ### 预渲染 和 服务器端渲染 {#prerender-ssr}
 
+预渲染和服务器端渲染都是提前渲染 HTML，加快页面呈现速度。
+
+区别在于:
+服务器端渲染更具参数动态渲染不同内容,比如不同 id 渲染出不同的详情页面给客户端,
+类似于 PHP 渲染模板,Java 渲染的 JSP,或者.net 的 aspx/cshtml
+
+而预渲染，则通常是更具不同的路由渲染出不同的页面出来，类似于 Jekyll,Gitbook 这种静态网站页面生成。
+
 ## react-snap 预渲染参数
+
+React Snap号称是无需配置的预渲染工具。
+安装完，加一行命令即可在build完成之后自动进行预渲染。
+```json
+{
+  "scripts": {
+    "postbuild": "react-snap"
+  }
+}
+```
+
+### 参数
+
+
 
 ## React 预渲染优化
 
 ## Fela 样式兼容
+
+## 参考
+
+- <https://github.com/stereobooster/react-snap>
+- <https://github.com/chrisvfritz/prerender-spa-plugin#what-is-prerendering>
