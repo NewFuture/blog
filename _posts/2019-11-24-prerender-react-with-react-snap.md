@@ -10,8 +10,6 @@ tags:
 
 ## 什么是预渲染 {#pre-render}
 
-### 预渲染
-
 > 预渲染(`pre-render`)是提前将静态页面内容进行渲染，用来优化页面响应，SEO 以及生成静态页面.
 
 流行的渲染工具(基于无 puppeteer 浏览器实现)
@@ -102,7 +100,7 @@ new Vue({ el: "#app", render: h => h(App) });
 
 ### 预渲染 和 服务器端渲染 {#prerender-ssr}
 
-预渲染和服务器端渲染都是提前渲染 HTML，加快页面呈现速度。
+预渲染（Pre-render）和服务器端渲染(Server-Side-Render)都是提前渲染 HTML，加快页面呈现速度。
 
 区别在于:
 服务器端渲染更具参数动态渲染不同内容,比如不同 id 渲染出不同的详情页面给客户端,
@@ -112,8 +110,9 @@ new Vue({ el: "#app", render: h => h(App) });
 
 ## react-snap 预渲染参数
 
-React Snap号称是无需配置的预渲染工具。
-安装完，加一行命令即可在build完成之后自动进行预渲染。
+React Snap 号称是无需配置的预渲染工具。
+安装完，加一行命令即可在 build 完成之后自动进行预渲染。
+
 ```json
 {
   "scripts": {
@@ -122,11 +121,28 @@ React Snap号称是无需配置的预渲染工具。
 }
 ```
 
+### React 预渲染优化
+
+react 提供了 [hydrate](https://zh-hans.reactjs.org/docs/react-dom.html#hydrate) 方法，用来合并已有的元素避免再次重新渲染整个`root`节点。(虽然`hydrate`是为服务器端渲染提供的，但是在预渲染的场景同样适用)
+
+```jsx
+import { hydrate, render } from "react-dom";
+
+const root = document.getElementById("root");
+// render(<App />, rootElement); 换成
+if (root.hasChildNodes()) {
+  // 在已经预渲染的情况下，执行 hydrate
+  hydrate(<App />, root);
+} else {
+  render(<App />, rootElement);
+}
+```
+
+这样当 JS 开始执行的时候，react 会之间在现有的 dom 上进行事件绑定，而不是删除现有元素重新渲染所有节点.
+
 ### 参数
 
-
-
-## React 预渲染优化
+## 样式兼容
 
 ## Fela 样式兼容
 
