@@ -2,7 +2,6 @@
 layout: post
 title: Pre-render React with react-snap
 subtitle: 使用react-snap对react页面进行预渲染
-private: true
 tags:
   - React
   - Front-End
