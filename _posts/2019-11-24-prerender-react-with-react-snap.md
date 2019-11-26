@@ -142,9 +142,109 @@ if (root.hasChildNodes()) {
 
 ### 参数
 
+通过在`package.json`中的指定`"reactSnap"`配置
+
+```json
+{
+  "reactSnap": {}
+}
+```
+
+是通过[源码](https://github.com/stereobooster/react-snap/blob/master/index.js)可以找到所有的配置项
+
+```js
+{
+  //# stable configurations
+  port: 45678,
+  source: "build",
+  destination: null,
+  concurrency: 4,
+  include: ["/"],
+  userAgent: "ReactSnap",
+  // 4 params below will be refactored to one: `puppeteer: {}`
+  // https://github.com/stereobooster/react-snap/issues/120
+  headless: true,
+  puppeteer: {
+    cache: true
+  },
+  puppeteerArgs: [],
+  puppeteerExecutablePath: undefined,
+  puppeteerIgnoreHTTPSErrors: false,
+  publicPath: "/",
+  minifyCss: {},
+  minifyHtml: {
+    collapseBooleanAttributes: true,
+    collapseWhitespace: true,
+    decodeEntities: true,
+    keepClosingSlash: true,
+    sortAttributes: true,
+    sortClassName: false
+  },
+  // mobile first approach
+  viewport: {
+    width: 480,
+    height: 850
+  },
+  sourceMaps: true,
+  //# workarounds
+  // using CRA1 for compatibility with previous version will be changed to false in v2
+  fixWebpackChunksIssue: "CRA1",
+  removeBlobs: true,
+  fixInsertRule: true,
+  skipThirdPartyRequests: false,
+  cacheAjaxRequests: false,
+  http2PushManifest: false,
+  // may use some glob solution in the future, if required
+  // works when http2PushManifest: true
+  ignoreForPreload: ["service-worker.js"],
+  //# unstable configurations
+  preconnectThirdParty: true,
+  // Experimental. This config stands for two strategies inline and critical.
+  // TODO: inline strategy can contain errors, like, confuse relative urls
+  inlineCss: false,
+  //# feature creeps to generate screenshots
+  saveAs: "html",
+  crawl: true,
+  waitFor: false,
+  externalServer: false,
+  //# even more workarounds
+  removeStyleTags: false,
+  preloadImages: false,
+  // add async true to script tags
+  asyncScriptTags: false,
+  //# another feature creep
+  // tribute to Netflix Server Side Only React https://twitter.com/NetflixUIE/status/923374215041912833
+  // but this will also remove code which registers service worker
+  removeScriptTags: false
+};
+```
+
+#### skipThirdPartyRequests
+
+默认会模拟发送网络请求，如果涉及到动态数据(如需要登录),可以通过这个配置关闭这个
+
+#### inlineCss
+
+设置 true 可以压缩初次渲染的 css，如果出现异常可以关闭。
+
+#### crawl
+
+默认 react-snap 会采用爬虫的方式(寻找所有的`a`标签)然后渲染本站的所有链接。
+
+但是有些场景可能只需要渲染特点的页面，可以设置 为 false 配合 `include`只抓取特点页面。
+
+#### include
+
+指定要爬取的页面如`["/","/about.html"]`,则会从这两个页面路由开始生成预渲染。如果`crawl`设置 false 则会只生成这两页预渲染。
+
+#### preloadImages
+
+如果页面引用图片是固定的，可以将`preloadImages`设置为 true。
+在浏览器解析 html 的 head 后会同时预取需要的图片。
+
 ## 样式兼容
 
-## Fela 样式兼容
+### Fela 样式兼容
 
 ## 参考
 
