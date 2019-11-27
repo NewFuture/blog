@@ -266,7 +266,7 @@ if (root && root.hasChildNodes()) {
 }
 ```
 
-![build with pre-render](/assets/img/prerender-react-with-react-snap/prerender-preview.png)
+![render loading animation](/assets/img/prerender-react-with-react-snap/loading.png)
 
 上面的是预期效果，预渲处理后会变成下图(位置发生了偏移,造成动画异常)
 
