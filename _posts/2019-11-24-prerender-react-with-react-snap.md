@@ -234,7 +234,7 @@ if (root.hasChildNodes()) {
 
 #### include
 
-指定要爬取的页面如`["/","/about.html"]`,则会从这两个页面路由开始生成预渲染。如果`crawl`设置 false 则会只生成这两页预渲染。
+指定要爬取的页面如`["/","/about.html"]`,则会从这两个页面路由开始生成预渲染。如果`crawl`设置 `false` 则会只生成这两页预渲染。
 
 #### preloadImages
 
@@ -243,7 +243,71 @@ if (root.hasChildNodes()) {
 
 ## 样式兼容
 
+对于使用 JSS(CSS-in-JS 使用 js 生成 css 代码)的场景(比如[fluent-ui-react](https://github.com/microsoft/fluent-ui-react))。
+由于样式已经提前写入 html 中,这种情况会导致部分样式二次叠加造成一下显示 bug。
+
+比如这个 加载 动画
+
+```jsx
+import React from "react";
+import { hydrate, render } from "react-dom";
+import { Loader, Provider, themes } from "@stardust-ui/react";
+
+const App = () => (
+  <Provider theme={themes.teams}>
+    <Loader />
+  </Provider>
+);
+const root = document.getElementById("root");
+if (root && root.hasChildNodes()) {
+  hydrate(<App />, root);
+} else {
+  render(<App />, root);
+}
+```
+
+![build with pre-render](/assets/img/prerender-react-with-react-snap/prerender-preview.png)
+
+上面的是预期效果，预渲处理后会变成下图(位置发生了偏移,造成动画异常)
+
+### removeStyleTags
+
+`react-snap` 提供了`removeStyleTags`参数,在预渲的结果去掉`<style>`标签，用以兼容这些问题。
+
+`removeStyleTags` 设置为`true`可以是最终的渲染结果一致，但是在 JS 执行前，预渲染的页面不包含 css 样式，这段时期会出现样式丢失的现象(很多时候失去了预渲染的意义)
+
 ### Fela 样式兼容
+
+[Fela](https://github.com/robinweser/fela)(State-Driven Styling in JavaScript) 是一个流行的 JS 动态渲染 style 的库,在很多 UI 组件库中有使用。
+
+提供了`rehydrate`方法进行合并已有的 `<style>`
+
+```js
+import { createRenderer } from "fela";
+import { rehydrate } from "fela-dom";
+const renderer = createRenderer();
+rehydrate(renderer);
+```
+
+这样可以合并预渲染结果。
+
+### 挂载时删除 style 标签
+
+然而很多时候 UI 库并没有暴露出类似 `rehydrate`的 API,此时的 work round 就是在 React 渲染的时候删除已有的`<style>`标签。
+
+```jsx
+const rootElement = document.getElementById("root")!;
+if (rootElement.hasChildNodes()) {
+    // 渲染前将所有的style内容清空
+    // 可以根据情况限制style的范围比如 document.querySelectorAll('style[data-jss]')
+    document.querySelectorAll('style').forEach(s => s.innerHTML = '');
+    hydrate(<App />, rootElement);
+} else {
+    render(<App />, rootElement);
+}
+```
+
+这样在渲染前和渲染后都能样式一致。
 
 ## 参考
 
