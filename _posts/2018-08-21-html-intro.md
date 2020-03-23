@@ -88,3 +88,4 @@ HTML5 通常包括两个部分:
 * [HTML 教程 - 菜鸟教程](http://www.runoob.com/html/html-tutorial.html)
 * [HTML5 Tutorial - w3schools](https://www.w3schools.com/html/)
 * [HTML Tags - w3schools](https://www.w3schools.com/tags/ref_byfunc.asp)
+* [HTML Guide Beginners](https://www.websiteplanet.com/blog/html-guide-beginners/)
