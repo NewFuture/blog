@@ -8,6 +8,8 @@ tags:
   - Front-End
 ---
 
+更好的体验，页面显示应当尽可能**快** 而且 尽可能**准**
+
 ## 目录
 
 - SWR (stale-while-revalidate)
