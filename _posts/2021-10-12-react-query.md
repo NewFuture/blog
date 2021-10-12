@@ -16,10 +16,20 @@ tags:
 
 ## SWR (stale-while-revalidate)
 
+### stale-while-revalidate 策略(思想)
+
+SWR 是缓存控制协议(在指定的时间范围内，可以先使用失效的旧数据，同时请求刷新的数据)
+
+比如网页返回头
+```
+Cache-Control: max-age=60, stale-while-revalidate=3600
+```
+表示可缓存60s, 在此之后3600s之内可以先使用失效的缓存数据并刷新数据。
+
+即1分钟之后，缓存失效，再次后1小时内请求数据时仍可先使用旧的缓存数据并异步获取新的数据更新缓存。
 
 
-
-常见的实现原理
+### SWR 对于前端数据query常见的实现原理
 
 > The name “SWR” is derived from stale-while-revalidate, a cache invalidation strategy popularized by HTTP RFC 5861. 
 > SWR first returns the data from cache (stale), then sends the request (revalidate), and finally comes with the up-to-date data again.
@@ -40,4 +50,9 @@ API
 ```js
 const { data, error, isValidating, mutate } = useSWR(key, fetcher, options);
 ```
+
+
+## react query
+
+https://github.com/tannerlinsley/react-query
 
