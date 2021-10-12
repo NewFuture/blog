@@ -10,7 +10,7 @@ tags:
 
 ## 目录
 
-- SWR ()
+- SWR (stale-while-revalidate)
 - useSWR
 - useReactQuery
 
@@ -29,7 +29,9 @@ Cache-Control: max-age=60, stale-while-revalidate=3600
 即1分钟之后，缓存失效，再次后1小时内请求数据时仍可先使用旧的缓存数据并异步获取新的数据更新缓存。
 
 
-### SWR 对于前端数据query常见的实现原理
+### SWR for FE
+
+对于前端数据请求缓存常见的实现原理(server端不一定实现缓存)
 
 > The name “SWR” is derived from stale-while-revalidate, a cache invalidation strategy popularized by HTTP RFC 5861. 
 > SWR first returns the data from cache (stale), then sends the request (revalidate), and finally comes with the up-to-date data again.
