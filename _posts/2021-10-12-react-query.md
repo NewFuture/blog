@@ -48,19 +48,62 @@ Cache-Control: max-age=60, stale-while-revalidate=3600
 
 ## useSWR
 
-https://github.com/vercel/swr
+<https://github.com/vercel/swr>
+
+实现对SWR策略封装.
 
 API
 
 ```js
 const { data, error, isValidating, mutate } = useSWR(key, fetcher, options);
-
 ```
 
-* `key` 数组参数
-* 返回`data`和`error` 返回数据状态
+* `key` 数组|string等参数
+* 返回`data`和`error` 返回数据或错误状态
+
+优点： 简单高效，体积小。
+缺点： loading状态，主动刷新，分页管理等支持不足
 
 ## react query
 
-https://github.com/tannerlinsley/react-query
+<https://github.com/tannerlinsley/react-query>
 
+```tsx
+ import { useQuery, QueryCache, ReactQueryCacheProvider } from 'react-query'
+ 
+ const queryCache = new QueryCache()
+ 
+ export default function App() {
+   return (
+     <ReactQueryCacheProvider queryCache={queryCache}>
+       <Example />
+     </ReactQueryCacheProvider>
+   )
+ }
+ 
+ function Example() {
+   const { isLoading, error, data } = useQuery('repoData', () =>
+     fetch('https://api.github.com/repos/tannerlinsley/react-query').then(res =>
+       res.json()
+     )
+   )
+ 
+   if (isLoading) return 'Loading...'
+ 
+   if (error) return 'An error has occurred: ' + error.message
+ 
+   return (
+     <div>
+       <h1>{data.name}</h1>
+       <p>{data.description}</p>
+       <strong>👀 {data.subscribers_count}</strong>{' '}
+       <strong>✨ {data.stargazers_count}</strong>{' '}
+       <strong>🍴 {data.forks_count}</strong>
+     </div>
+   )
+ }
+ ```
+ 
+需要一个封装
+
+对比：<https://react-query-v2.tanstack.com/docs/comparison>
