@@ -50,11 +50,15 @@ Cache-Control: max-age=60, stale-while-revalidate=3600
 
 https://github.com/vercel/swr
 
-API 
+API
+
 ```js
 const { data, error, isValidating, mutate } = useSWR(key, fetcher, options);
+
 ```
 
+* `key` 数组参数
+* 返回`data`和`error` 返回数据状态
 
 ## react query
 
