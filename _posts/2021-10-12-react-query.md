@@ -10,7 +10,7 @@ tags:
 
 更好的体验，页面显示应当尽可能**快** 而且 尽可能**准**
 
-## 目录
+## 内容
 
 - SWR (stale-while-revalidate)
 - useSWR
@@ -111,4 +111,11 @@ const { data, error, isValidating, mutate } = useSWR(key, fetcher, options);
 
 对比：<https://react-query-v2.tanstack.com/docs/comparison>
 ![image](https://user-images.githubusercontent.com/6290356/137076548-352e4311-ccf0-4573-b655-88620f593d2e.png)
+
+## react query 
+
+* 取消请求 <https://react-query.tanstack.com/guides/query-cancellation>
+* `isLoading` (从无到有) vs `isFetching`(发出请求)
+* `enable` 控制是否请求 <https://react-query.tanstack.com/guides/disabling-queries>
+
 
