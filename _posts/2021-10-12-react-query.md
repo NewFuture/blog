@@ -58,15 +58,18 @@ API
 const { data, error, isValidating, mutate } = useSWR(key, fetcher, options);
 ```
 
-* `key` 数组|string等参数
+* `key` 数组 或者 string等参数
 * 返回`data`和`error` 返回数据或错误状态
 
 优点： 简单高效，体积小。
+
 缺点： loading状态，主动刷新，分页管理等支持不足
 
 ## react query
 
 <https://github.com/tannerlinsley/react-query>
+
+对query查询更丰富的封装
 
 ```tsx
  import { useQuery, QueryCache, ReactQueryCacheProvider } from 'react-query'
@@ -104,6 +107,8 @@ const { data, error, isValidating, mutate } = useSWR(key, fetcher, options);
  }
  ```
  
-需要一个封装
+需要一个`ReactQueryCacheProvider`封装
 
 对比：<https://react-query-v2.tanstack.com/docs/comparison>
+![image](https://user-images.githubusercontent.com/6290356/137076548-352e4311-ccf0-4573-b655-88620f593d2e.png)
+
