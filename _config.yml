@@ -11,11 +11,11 @@ theme_settings:
   description: "Blog of New Future'" # used by search engines
 
   # Header and footer text
- # header_text: >
+  # header_text: >
 
   header_text_feature_image:
   footer_text: >
-   <i class="fa fa-edit"></i> with <i class="fa fa-heart"></i> by <a href="https://newfuture.cc">NewFuture</a>
+    <i class="fa fa-edit"></i> with <i class="fa fa-heart"></i> by <a href="https://newfuture.cc">NewFuture</a>
 
   # Icons
   rss: false
@@ -29,11 +29,11 @@ theme_settings:
   github: "NewFuture"
   google_plus:
   instagram:
-  linkedin:  # Full URL
+  linkedin: # Full URL
   pinterest:
   reddit:
   soundcloud:
-  stack_exchange:  # Full URL
+  stack_exchange: # Full URL
   steam:
   tumblr:
   twitter:
@@ -76,17 +76,17 @@ collections:
     output: true
     permalink: /:title/
 
-markdown: kramdown
+markdow: CommonMarkGhPages # GitHub Pages
 kramdown:
-  input:              GFM
+  input: GFM
 
 highlighter: rouge
 sass:
   sass_dir: _sass
   style: :compressed
 
-plugins: 
-- jekyll-paginate
+plugins:
+  - jekyll-paginate
 
 #theme: jekyll-theme-type
 exclude:
