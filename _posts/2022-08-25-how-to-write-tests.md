@@ -14,7 +14,8 @@ tags:
 1. how to test a function
 1. how to test an async function
 1. how to test a hook
-1. how to test a component
+1. how to test a component (render)
+1. how to test a component (snapshot)
 1. how to test an APP
 
 ## JavaScript/TypeScript Framework
@@ -100,8 +101,8 @@ describe("JSON.stringify basic type", () => {
 
 //describe：创造一个块，将一组相关的测试用例组合在一起
 describe("JSON.stringify basic type", () => {
-    // it: 测试用例  (test 别名)
-    it("works with boolean", () => {
+    // it/test: 测试用例  (test 别名)
+    test("works with boolean", () => {
         const result = JSON.stringify(true);
         expect(result).toBe("true"); // expect：断言某个值，条件(matcher)不成立则测试不通过
         expect(result).not.toBe(true); // not: 否定判断
@@ -170,7 +171,7 @@ jest 测试异步函数支持两种方式
 // × 错误写法
 test("the fetch fails with an error", () => {
     // 无论fetchData 是否成功，都会测试正常完成
-    return fetchData().catch((e) => expect(e).toMatch("error")); 
+    return fetchData().catch((e) => expect(e).toMatch("error"));
 });
 
 // √ 正确写法
@@ -181,5 +182,122 @@ test("the fetch fails with an error", () => {
 ```
 
 参考 jest 异步测试 <https://jestjs.io/docs/asynchronous>
+
+</details>
+
+## Test a React Hook
+
+> hooks 是一种特殊的组件
+
+1. use `@testing-library/react` to `renderHook`
+2. `rerender` for props changed
+
+### test a hook result
+
+```ts
+import { renderHook } from "@testing-library/react";
+// import { renderHook } from '@testing-library/react-hooks' // old version
+
+/**
+ * a hook
+ */
+const useTestHook = () => {
+    const [name, setName] = React.useState("");
+    React.useEffect(() => setName("Test"), []);
+    return name;
+};
+
+test("render useTestHook", () => {
+    const { result } = renderHook(useTestHook); // renderHook 返回值中 result 指向返回值的ref
+    expect(result.current).toBe("Test"); // result.current 为当前值
+});
+```
+
+### test with rerender
+
+```ts
+const useTestProps = (value) => {
+    const [name, setName] = React.useState("");
+    React.useEffect(() => setName((n) => `${n} ${value}`), [value]);
+    return name;
+};
+test("returns useTestProps", () => {
+    const { result, rerender } = renderHook(useTestProps, {
+        initialProps: "Test", // provide init render value
+    });
+    expect(result.current).toBe(" Test");
+    rerender("NewValue"); // rerender with new value
+    expect(result.current).toEqual(" Test NewValue");
+});
+```
+
+### test with async hook update
+
+-   React Testing Library (version >= 13)
+
+```ts
+import React from "react";
+import { act, waitFor, renderHook } from "@testing-library/react"; // React Testing Library Version>= 13.0
+
+const useTestPromise = () => {
+    const [name, setName] = React.useState("");
+    return {
+        name,
+        updateAsyc: (v) => {
+            Promise.resolve().then(() => setName(v));
+        },
+    };
+};
+
+test("returns useTestPromise", async () => {
+    // async 异步函数
+    const { result } = renderHook(useTestPromise);
+    expect(result.current.name).toBe(""); // 检查初始值
+
+    // act 包裹异步状态更新，否则可能状态无法更新或者react warning
+    await act(async () => {
+        result.current.updateAsyc("Test"); // 调用异步更新操作
+        await waitFor(() => !!result.current.name); // 等待更新
+    });
+    expect(result.current.name).toEqual("Test");
+});
+```
+
+-   React Hooks Testing Library
+
+```ts
+import React from "react";
+import { renderHook } from "@testing-library/react-hooks"; // React Hooks Testing Library
+
+const useTestPromise = () => {
+    const [name, setName] = React.useState("");
+    return {
+        name,
+        updateAsyc: (v) => Promise.resolve().then(() => setName(v)),
+    };
+};
+
+test("returns useTestPromise", async () => {
+    // async 异步函数
+    const { result, waitForNextUpdate } = renderHook(useTestPromise);
+    expect(result.current.name).toBe(""); // 检查初始值
+    result.current.updateAsyc("Test");
+    await waitForNextUpdate(); // 等待异步值更新
+    expect(result.current.name).toEqual("Test");
+});
+```
+
+<details>
+
+[React Hooks Testing Library](https://react-hooks-testing-library.com/) 提供了更为丰富的 API
+
+-   [异步更新 `waitForNextUpdate`](https://react-hooks-testing-library.com/usage/advanced-hooks#async)
+-   [错误 `error`](https://react-hooks-testing-library.com/usage/advanced-hooks#errors)
+
+> 但是[React Hooks Testing Library](https://react-hooks-testing-library.com/) 可能会被弃用，请谨慎使用 https://github.com/testing-library/react-hooks-testing-library/issues/849
+
+参考资料
+* <https://react-hooks-testing-library.com/reference/api>
+* <https://testing-library.com/docs/react-testing-library/api#renderhook>
 
 </details>
