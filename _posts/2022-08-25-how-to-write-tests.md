@@ -1,7 +1,7 @@
 ---
 layout: post
 title: How to write tests
-subtitle: 前端测试
+subtitle: 前端测试基础
 private: true
 # feature-img:
 tags:
@@ -9,14 +9,6 @@ tags:
     - test
     - jest
 ---
-
-0. Javascript Framework
-1. how to test a function
-1. how to test an async function
-1. how to test a hook
-1. how to test a component (render)
-1. how to test a component (snapshot)
-1. how to test an APP
 
 ## JavaScript/TypeScript Framework
 
@@ -36,7 +28,8 @@ tags:
 3. [Jasmine](https://jasmine.github.io/)
     > Behavior-Driven JavaScript.
     > Low overhead, jasmine-core has no external dependencies.
-    </details>
+
+</details>
 
 ## Test a basic Function
 
@@ -231,7 +224,9 @@ test("returns useTestProps", () => {
 });
 ```
 
-### test with async hook update
+## test an async hook update
+
+测试异步更新的 hook.
 
 -   React Testing Library (version >= 13)
 
@@ -243,6 +238,7 @@ const useTestPromise = () => {
     const [name, setName] = React.useState("");
     return {
         name,
+        // a function to update date async
         updateAsyc: (v) => {
             Promise.resolve().then(() => setName(v));
         },
@@ -297,7 +293,62 @@ test("returns useTestPromise", async () => {
 > 但是[React Hooks Testing Library](https://react-hooks-testing-library.com/) 可能会被弃用，请谨慎使用 https://github.com/testing-library/react-hooks-testing-library/issues/849
 
 参考资料
-* <https://react-hooks-testing-library.com/reference/api>
-* <https://testing-library.com/docs/react-testing-library/api#renderhook>
+
+-   <https://react-hooks-testing-library.com/reference/api>
+-   <https://testing-library.com/docs/react-testing-library/api#renderhook>
+
+</details>
+
+## test a component (dom tree)
+
+use `@testing-library/react` to `render`
+
+```ts
+
+```
+
+# test a component (Snapshot Testing Tests)
+
+Snapshot Testing 保证静态 UI 没有意外变化, UI 更新能清楚标明变化的地方
+
+-   `toMatchSnapshot` to check the snapshot
+-   `yarn jest -u` to update snapshots
+
+```tsx
+import { create } from "react-test-renderer";
+test("Test Snapshot", () => {
+    const tree = create(<div>Test</div>); // 渲染结果, state 更新需要 act 包裹
+    expect(tree).toMatchSnapshot(); // jest 会检查/更新 快照文件
+});
+```
+
+<details>
+
+### Snapshot Testing 可以保证 UI 的稳定性，但是不适合逻辑细节的测试
+
+-   [jest snapshot-testing](https://jestjs.io/docs/snapshot-testing)
+    > 典型的做法是在渲染了 UI 组件之后，保存一个快照文件， 检测他是否与保存在单元测试旁的快照文件相匹配。 若两个快照不匹配，测试将失败：有可能做了意外的更改，或者 UI 组件已经更新到了新版本。
+-   [react snapshot-testing]
+    https://reactjs.org/docs/testing-recipes.html#snapshot-testing
+
+> 通常，进行具体的断言比使用快照更好。这类测试包括实现细节，因此很容易中断
+
+</details>
+
+## test an APP (E2E Tests)
+
+让浏览器渲染完整的 APP, 模拟用户进行真实场景的测试 (end-2-end test)
+
+> 使用 [Playwright](https://playwright.dev) https://github.com/microsoft/playwright
+
+更多内容单独说明
+
+<details>
+
+## 主流 E2E 测试工具
+
+-   [Playwright](https://playwright.dev/): a framework for Web Testing and Automation
+-   [Cypress](https://www.cypress.io/): a framework and solution for e2e tests
+-   [Puppeteer](https://github.com/puppeteer/puppeteer): (lib) Headless Chrome Node.js API
 
 </details>
