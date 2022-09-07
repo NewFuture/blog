@@ -301,11 +301,82 @@ test("returns useTestPromise", async () => {
 
 ## test a component (dom tree)
 
-use `@testing-library/react` to `render`
+-   use `@testing-library/react` to `render`
+-   fireEvent 触发用户操作事件
 
-```ts
+### basic render
 
+```tsx
+import "@testing-library/jest-dom"; // add custom jest matchers from jest-dom, （可在setup中全局导入）
+import { render, screen } from "@testing-library/react"; // import react-testing methods
+
+// 待测试组件
+const Test = () => <div data>test</div>;
+
+test("render test", () => {
+    render(<Test />); // render the component
+
+    // assert that the alert message is correct using
+    expect(screen.getByText("test")).toBeInTheDocument();
+});
 ```
+
+### with user events
+
+```tsx
+import "@testing-library/jest-dom";
+import { render, fireEvent, waitFor, screen } from "@testing-library/react";
+import Fetch from "../fetch"; // the component to test
+
+test("loads and displays greeting", async () => {
+    render(<Fetch url="/greeting" />);
+
+    fireEvent.click(screen.getByText("Load Greeting")); // 点击事件
+
+    await waitFor(() => screen.getByRole("heading")); // 等待页面出现 heading
+
+    expect(screen.getByRole("heading")).toHaveTextContent("hello there"); // 断言文字类容
+    expect(screen.getByRole("button")).toBeDisabled(); // 断言按钮状态
+});
+```
+
+<details>
+
+### @testing-library
+
+-   [queries](https://testing-library.com/docs/queries/about)
+-   [full user-event](https://testing-library.com/docs/user-event/setup)
+-   [debug](https://testing-library.com/docs/dom-testing-library/api-debugging)
+-   [within](https://testing-library.com/docs/dom-testing-library/api-within)
+
+```tsx
+import { render, within, screen } from "@testing-library/react";
+
+const { getByText } = render(<MyComponent />);
+const messages = getByText("messages");
+screen.debug(messages); // print the dom
+within(messages).getByText("hello"); // 在 messages 元素内查找
+```
+
+### enzyme 测试 React
+
+另一个曾经比较流行的测试框架 [enzyme](https://enzymejs.github.io/enzyme/),维护组件树支持组件和属性 Query,但是其维护状态和对新版 React 支持上均不如 testing-library.
+https://npmtrends.com/@testing-library/react-vs-enzyme
+
+```tsx
+import { shallow } from "enzyme";
+import MyComponent from "./MyComponent";
+import Foo from "./Foo";
+
+test("test selector", () => {
+    const wrapper = shallow(<MyComponent />);
+    expect(wrapper.find("#foo")).to.have.lengthOf(1); // query selector
+    expect(wrapper.find(Foo)).to.have.lengthOf(1); // find by components
+    expect(wrapper.find({ prop: "value" })).to.have.lengthOf(1); // find by properties
+});
+```
+
+</details>
 
 # test a component (Snapshot Testing Tests)
 
