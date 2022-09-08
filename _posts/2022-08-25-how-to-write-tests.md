@@ -17,7 +17,7 @@ tags:
 
 <details>
 
-## JS 基础测试框架对比 https://npmtrends.com/jasmine-vs-jest-vs-mocha
+### JS 基础测试框架对比 https://npmtrends.com/jasmine-vs-jest-vs-mocha
 
 1. [Jest](https://jestjs.io/)
     > Jest is a delightful JavaScript Testing Framework with a focus on simplicity.
@@ -31,7 +31,7 @@ tags:
 
 </details>
 
-## Test a basic Function
+### Test a basic Function
 
 对于给定输入判断输出，以测试 `stringify` 为例
 
@@ -51,9 +51,9 @@ describe("JSON.stringify basic type", () => {
 });
 ```
 
-<details>
+<details open>
 
-## 内置 matcher
+### 内置 matcher
 
 1. 通用 Common Matchers
     - `toBe` 完全相等 (exact equality).
@@ -399,8 +399,7 @@ test("Test Snapshot", () => {
 
 -   [jest snapshot-testing](https://jestjs.io/docs/snapshot-testing)
     > 典型的做法是在渲染了 UI 组件之后，保存一个快照文件， 检测他是否与保存在单元测试旁的快照文件相匹配。 若两个快照不匹配，测试将失败：有可能做了意外的更改，或者 UI 组件已经更新到了新版本。
--   [react snapshot-testing]
-    https://reactjs.org/docs/testing-recipes.html#snapshot-testing
+-   [react snapshot-testing](https://reactjs.org/docs/testing-recipes.html#snapshot-testing)
 
 > 通常，进行具体的断言比使用快照更好。这类测试包括实现细节，因此很容易中断
 
