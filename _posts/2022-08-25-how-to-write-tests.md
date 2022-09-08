@@ -85,33 +85,13 @@ describe("JSON.stringify basic type", () => {
 
 </details>
 
-## Test an Asynchronous Function
-
-对于给定输入判断输出，以测试 `stringify` 为例
-
-```ts
-// stringify.test.ts
-
-//describe：创造一个块，将一组相关的测试用例组合在一起
-describe("JSON.stringify basic type", () => {
-    // it/test: 测试用例  (test 别名)
-    test("works with boolean", () => {
-        const result = JSON.stringify(true);
-        expect(result).toBe("true"); // expect：断言某个值，条件(matcher)不成立则测试不通过
-        expect(result).not.toBe(true); // not: 否定判断
-    });
-
-    // ... 多组 it
-});
-```
-
-## Test an async function
+## Test Asynchronous Function
 
 1. 优先使用 Async/Await 函数
 2. 使用 `.resolves`/`.rejects` 判断 Promise
 3. 非 promise(事件触发)考虑 callback 回调方式
 
-### async 函数
+### async/await 函数
 
 ```ts
 test("the data is ok", async () => {
@@ -284,6 +264,7 @@ test("returns useTestPromise", async () => {
 ```
 
 ### live demo
+
 <iframe src="https://codesandbox.io/embed/test-async-hook-update-38t0cd?autoresize=1&fontsize=14&hidenavigation=1&module=%2Fsrc%2FuseTestPromise.test.ts&previewwindow=tests&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
      title="test-async-hook-update"
@@ -385,7 +366,7 @@ test("test selector", () => {
 
 </details>
 
-# test a component (Snapshot Testing Tests)
+## test a component (Snapshot Testing Tests)
 
 Snapshot Testing 保证静态 UI 没有意外变化, UI 更新能清楚标明变化的地方
 
@@ -422,7 +403,7 @@ test("Test Snapshot", () => {
 
 <details>
 
-## 主流 E2E 测试工具
+### 主流 E2E 测试工具
 
 -   [Playwright](https://playwright.dev/): a framework for Web Testing and Automation
 -   [Cypress](https://www.cypress.io/): a framework and solution for e2e tests
