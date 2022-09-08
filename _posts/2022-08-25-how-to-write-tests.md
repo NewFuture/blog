@@ -204,7 +204,7 @@ test("returns useTestProps", () => {
 });
 ```
 
-## test an async hook update
+## Test for Async Hook uUdate
 
 测试异步更新的 hook.
 
@@ -287,7 +287,7 @@ test("returns useTestPromise", async () => {
 
 </details>
 
-## test a component (dom tree)
+## Test a Component (dom tree)
 
 -   use `@testing-library/react` to `render`
 -   fireEvent 触发用户操作事件
@@ -366,7 +366,7 @@ test("test selector", () => {
 
 </details>
 
-## test a component (Snapshot Testing Tests)
+## Test a Component (Snapshot Testing Tests)
 
 Snapshot Testing 保证静态 UI 没有意外变化, UI 更新能清楚标明变化的地方
 
@@ -393,7 +393,7 @@ test("Test Snapshot", () => {
 
 </details>
 
-## test an APP (E2E Tests)
+## Test an APP (E2E Tests)
 
 让浏览器渲染完整的 APP, 模拟用户进行真实场景的测试 (end-2-end test)
 
