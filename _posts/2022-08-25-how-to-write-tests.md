@@ -283,6 +283,13 @@ test("returns useTestPromise", async () => {
 });
 ```
 
+### live demo
+<iframe src="https://codesandbox.io/embed/test-async-hook-update-38t0cd?autoresize=1&fontsize=14&hidenavigation=1&module=%2Fsrc%2FuseTestPromise.test.ts&previewwindow=tests&theme=dark"
+     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+     title="test-async-hook-update"
+     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+   ></iframe>
+   
 <details>
 
 [React Hooks Testing Library](https://react-hooks-testing-library.com/) 提供了更为丰富的 API
