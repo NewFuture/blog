@@ -15,7 +15,7 @@ tags:
 1. **用 jest <https://github.com/facebook/jest>**
 2. `yarn jest` 运行所有测试
 
-<details>
+<details markdown="block">
 
 ### JS 基础测试框架对比 https://npmtrends.com/jasmine-vs-jest-vs-mocha
 
@@ -328,7 +328,7 @@ test("loads and displays greeting", async () => {
 });
 ```
 
-<details>
+<details markdown="block" open>
 
 ### @testing-library
 
@@ -381,7 +381,7 @@ test("Test Snapshot", () => {
 });
 ```
 
-<details>
+<details open markdown="block">
 
 ### Snapshot Testing 可以保证 UI 的稳定性，但是不适合逻辑细节的测试
 
@@ -401,7 +401,7 @@ test("Test Snapshot", () => {
 
 更多内容单独说明
 
-<details>
+<details markdown="block">
 
 ### 主流 E2E 测试工具
 
