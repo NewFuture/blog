@@ -3,22 +3,23 @@ layout: post
 title: How to write tests
 subtitle: 前端测试基础
 private: true
-# feature-img:
+feature-img: /assets/img/how-to-write-tests/jasmine-vs-jest-vs-mocha.png
 tags:
-    - FE
     - test
     - jest
 ---
 
-## JavaScript/TypeScript Framework
+## JS测试框架 JavaScript Testing Framework          {#javascript-testing-framework}
 
 1. **用 jest <https://github.com/facebook/jest>**
 2. `yarn jest` 运行所有测试
 
 <details markdown="block">
 
-### JS 基础测试框架对比 https://npmtrends.com/jasmine-vs-jest-vs-mocha
+### JS 基础测试框架对比     {#jasmine-vs-jest-vs-mocha}
 
+ [![npm trends for jasmine-vs-jest-vs-mocha](/assets/img/how-to-write-tests/jasmine-vs-jest-vs-mocha.png)](https://npmtrends.com/jasmine-vs-jest-vs-mocha)
+ 
 1. [Jest](https://jestjs.io/)
     > Jest is a delightful JavaScript Testing Framework with a focus on simplicity.
     > It works with projects using: Babel, TypeScript, Node, React, Angular, Vue and more!
@@ -31,7 +32,7 @@ tags:
 
 </details>
 
-### Test a basic Function
+## Test a Basic Function  {#test a basic Function}
 
 对于给定输入判断输出，以测试 `stringify` 为例
 
@@ -204,7 +205,7 @@ test("returns useTestProps", () => {
 });
 ```
 
-## Test for Async Hook uUdate
+## Test for Async Hook Update
 
 测试异步更新的 hook.
 
@@ -328,7 +329,7 @@ test("loads and displays greeting", async () => {
 });
 ```
 
-<details markdown="block" open>
+<details markdown="block">
 
 ### @testing-library
 
@@ -349,7 +350,7 @@ within(messages).getByText("hello"); // 在 messages 元素内查找
 ### enzyme 测试 React
 
 另一个曾经比较流行的测试框架 [enzyme](https://enzymejs.github.io/enzyme/),维护组件树支持组件和属性 Query,但是其维护状态和对新版 React 支持上均不如 testing-library.
-https://npmtrends.com/@testing-library/react-vs-enzyme
+[![npm trends for @testing-library/react-vs-enzyme](/assets/img/how-to-write-tests/testing-library-react-vs-enzyme.png)](https://npmtrends.com/@testing-library/react-vs-enzyme)
 
 ```tsx
 import { shallow } from "enzyme";
@@ -408,5 +409,7 @@ test("Test Snapshot", () => {
 -   [Playwright](https://playwright.dev/): a framework for Web Testing and Automation
 -   [Cypress](https://www.cypress.io/): a framework and solution for e2e tests
 -   [Puppeteer](https://github.com/puppeteer/puppeteer): (lib) Headless Chrome Node.js API
+
+[![npm trends for @playwright/test-vs-cypress-vs-puppeteer](/assets/img/how-to-write-tests/playwright-test-vs-cypress-vs-puppeteer.png)](https://npmtrends.com/@playwright/test-vs-cypress-vs-puppeteer)
 
 </details>
