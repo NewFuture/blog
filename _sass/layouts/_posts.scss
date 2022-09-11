@@ -66,6 +66,7 @@ article {
       color: transparent;
 
       &:empty::after {
+        margin-left: -1.5em;
         content: "🔗";
       }
 
@@ -78,7 +79,6 @@ article {
     &>h3:hover>a:empty,
     &>h4:hover>a:empty {
       color: $text-color;
-      margin-left: -1.5em;
     }
 
     &>h2 {
