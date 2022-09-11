@@ -9,17 +9,17 @@ tags:
     - jest
 ---
 
-## JS测试框架 JavaScript Testing Framework          {#javascript-testing-framework}
+## JS 测试框架 JavaScript Testing Framework {#javascript-testing-framework}
 
-1. **用 jest <https://github.com/facebook/jest>**
+1. **选 jest** <https://github.com/facebook/jest>
 2. `yarn jest` 运行所有测试
 
 <details markdown="block">
 
-### JS 基础测试框架对比     {#jasmine-vs-jest-vs-mocha}
+### JS 基础测试框架对比 {#jasmine-vs-jest-vs-mocha}
 
- [![npm trends for jasmine-vs-jest-vs-mocha](/assets/img/how-to-write-tests/jasmine-vs-jest-vs-mocha.png)](https://npmtrends.com/jasmine-vs-jest-vs-mocha)
- 
+[![npm trends for jasmine-vs-jest-vs-mocha](/assets/img/how-to-write-tests/jasmine-vs-jest-vs-mocha.png)](https://npmtrends.com/jasmine-vs-jest-vs-mocha)
+
 1. [Jest](https://jestjs.io/)
     > Jest is a delightful JavaScript Testing Framework with a focus on simplicity.
     > It works with projects using: Babel, TypeScript, Node, React, Angular, Vue and more!
@@ -32,13 +32,14 @@ tags:
 
 </details>
 
-## Test a Basic Function  {#test a basic Function}
+## Test Basic Function {#test-basic-function}
 
-对于给定输入判断输出，以测试 `stringify` 为例
+对于特定输入参数，判断对应输出结果是否符合期望
 
 ```ts
 // stringify.test.js
 
+// 对于给定输入判断输出，以测试 `stringify` 为例
 describe("JSON.stringify basic type", () => {
     //describe：创造一个块，将一组相关的测试用例组合在一起
     it("works with boolean", () => {
@@ -54,7 +55,7 @@ describe("JSON.stringify basic type", () => {
 
 <details open markdown="block">
 
-### 内置 matcher
+### 内置 matcher {#jest-matcher}
 
 1. 通用 Common Matchers
     - `toBe` 完全相等 (exact equality).
@@ -86,13 +87,13 @@ describe("JSON.stringify basic type", () => {
 
 </details>
 
-## Test Asynchronous Function
+## Test Asynchronous Function {#test-asynchronous-function}
 
 1. 优先使用 Async/Await 函数
 2. 使用 `.resolves`/`.rejects` 判断 Promise
 3. 非 promise(事件触发)考虑 callback 回调方式
 
-### async/await 函数
+### async/await 函数 {#jest-async-await}
 
 ```ts
 test("the data is ok", async () => {
@@ -102,7 +103,7 @@ test("the data is ok", async () => {
 });
 ```
 
-### expect(promise) 断言
+### expect(promise) 断言 {#jest-promise-resolves-rejects}
 
 ```ts
 test("the fetch fails with an error", async () => {
@@ -110,7 +111,7 @@ test("the fetch fails with an error", async () => {
 });
 ```
 
-### callback 参数回调
+### callback 参数回调 {#jest-callback}
 
 ```ts
 test("the data is ok", (done) => {
@@ -132,7 +133,7 @@ test("the data is ok", (done) => {
 
 <details open markdown="block">
 
-### jest 测试异步函数支持两种方式
+### jest 测试异步函数支持两种方式 {#jest-asynchronous-summary}
 
 -   传统的异步参数回调: `it('callback',(done:(err?:any)=>void)=>{})`l
 -   返回一个 Promise (async/await 是一种特殊的 Promise 写法): `it('promise',():Prmose<any>=>{})`;
@@ -159,14 +160,14 @@ test("the fetch fails with an error", () => {
 
 </details>
 
-## Test a React Hook
+## Test React Hooks {#test-react-hooks}
 
 > hooks 是一种特殊的组件
 
 1. use `@testing-library/react` to `renderHook`
 2. `rerender` for props changed
 
-### test a hook result
+### test a hook result {#test-a-hook-result}
 
 ```ts
 import { renderHook } from "@testing-library/react";
@@ -187,7 +188,7 @@ test("render useTestHook", () => {
 });
 ```
 
-### test with rerender
+### test with rerender {#test-with-rerender}
 
 ```ts
 const useTestProps = (value) => {
@@ -205,7 +206,7 @@ test("returns useTestProps", () => {
 });
 ```
 
-## Test for Async Hook Update
+## Test Async Hook Update {#test-async-hook-update}
 
 测试异步更新的 hook.
 
@@ -240,7 +241,7 @@ test("returns useTestPromise", async () => {
 });
 ```
 
--   React Hooks Testing Library
+-   React Hooks Testing Library (React Testing Library < v13)
 
 ```ts
 import React from "react";
@@ -264,7 +265,7 @@ test("returns useTestPromise", async () => {
 });
 ```
 
-### live demo
+a live demo for hook update tests
 
 <iframe src="https://codesandbox.io/embed/test-async-hook-update-38t0cd?autoresize=1&fontsize=14&hidenavigation=1&module=%2Fsrc%2FuseTestPromise.test.ts&previewwindow=tests&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
@@ -288,12 +289,12 @@ test("returns useTestPromise", async () => {
 
 </details>
 
-## Test a Component (dom tree)
+## Test Components (dom tree) {#test-components-dom}
 
 -   use `@testing-library/react` to `render`
 -   fireEvent 触发用户操作事件
 
-### basic render
+### basic render #{render-components}
 
 ```tsx
 import "@testing-library/jest-dom"; // add custom jest matchers from jest-dom, （可在setup中全局导入）
@@ -310,7 +311,7 @@ test("render test", () => {
 });
 ```
 
-### with user events
+### with user events {#user-events}
 
 ```tsx
 import "@testing-library/jest-dom";
@@ -331,7 +332,7 @@ test("loads and displays greeting", async () => {
 
 <details markdown="block">
 
-### @testing-library
+### @testing-library/react {#testing-libary-react}
 
 -   [queries](https://testing-library.com/docs/queries/about)
 -   [full user-event](https://testing-library.com/docs/user-event/setup)
@@ -347,7 +348,7 @@ screen.debug(messages); // print the dom
 within(messages).getByText("hello"); // 在 messages 元素内查找
 ```
 
-### enzyme 测试 React
+### enzyme 测试 React {#enzyme}
 
 另一个曾经比较流行的测试框架 [enzyme](https://enzymejs.github.io/enzyme/),维护组件树支持组件和属性 Query,但是其维护状态和对新版 React 支持上均不如 testing-library.
 [![npm trends for @testing-library/react-vs-enzyme](/assets/img/how-to-write-tests/testing-library-react-vs-enzyme.png)](https://npmtrends.com/@testing-library/react-vs-enzyme)
@@ -367,7 +368,7 @@ test("test selector", () => {
 
 </details>
 
-## Test a Component (Snapshot Testing Tests)
+## Test a Component (Snapshot Testing Tests) {#test-components-snapshot}
 
 Snapshot Testing 保证静态 UI 没有意外变化, UI 更新能清楚标明变化的地方
 
@@ -384,7 +385,7 @@ test("Test Snapshot", () => {
 
 <details open markdown="block">
 
-### Snapshot Testing 可以保证 UI 的稳定性，但是不适合逻辑细节的测试
+### Snapshot Testing 可以保证 UI 的稳定性，但是不适合逻辑细节的测试 {#snapshot-testing}
 
 -   [jest snapshot-testing](https://jestjs.io/docs/snapshot-testing)
     > 典型的做法是在渲染了 UI 组件之后，保存一个快照文件， 检测他是否与保存在单元测试旁的快照文件相匹配。 若两个快照不匹配，测试将失败：有可能做了意外的更改，或者 UI 组件已经更新到了新版本。
@@ -394,7 +395,7 @@ test("Test Snapshot", () => {
 
 </details>
 
-## Test an APP (E2E Tests)
+## Test an APP (E2E Tests) {#test-an-app-e2e}
 
 让浏览器渲染完整的 APP, 模拟用户进行真实场景的测试 (end-2-end test)
 
@@ -404,7 +405,7 @@ test("Test Snapshot", () => {
 
 <details markdown="block">
 
-### 主流 E2E 测试工具
+### 主流 E2E 测试工具 {#e2e-test-tools}
 
 -   [Playwright](https://playwright.dev/): a framework for Web Testing and Automation
 -   [Cypress](https://www.cypress.io/): a framework and solution for e2e tests

@@ -3,7 +3,7 @@ main {
   width: 100%;
 
   // 文章顶部
-  & > header {
+  &>header {
     font-size: 1.2em;
     margin: 1em 0 3em;
     text-align: center;
@@ -11,16 +11,19 @@ main {
     @media screen and (max-width: 640px) {
       font-size: 1.05em;
     }
-    & > h1 {
+
+    &>h1 {
       // 文章标题 title
       margin: 0;
     }
-    & > h2 {
+
+    &>h2 {
       // 文章子标题 subtitle
       // font-size: 1.45em;
       font-weight: normal;
       margin: 0;
     }
+
     // 文章和作者信息
     address {
       color: rgba($text-color, 0.5);
@@ -48,34 +51,61 @@ article {
   justify-content: space-around;
 
   // 内容区
-  & > section {
+  &>section {
     width: 70%;
-    & > :last-child {
+
+    &> :last-child {
       margin-bottom: 0;
     }
+
     // 标题链接
-    & > h2 > a,
-    & > h3 > a,
-    & > h4 > a {
+    &>h2>a,
+    &>h3>a,
+    &>h4>a {
       @extend .body-link;
-      color: $link-color;
+      color: transparent;
+
       &:empty::after {
-        content: "#";
+        content: "🔗";
+      }
+
+      &:empty:hover::after {
+        color: $link-color;
       }
     }
+
+    &>h2:hover>a,
+    &>h3:hover>a,
+    &>h4:hover>a {
+      color: $text-color;
+    }
+
+    &>h2 {
+      margin-top: 0;
+      padding-top: 2.4rem;
+    }
+
+    &>h3 {
+      margin-top: 0;
+      padding-top: 2rem;
+    }
+
   }
 
+
   // 文章侧边栏
-  & > aside {
+  &>aside {
     max-width: 20%;
     flex-grow: 1;
     padding-top: 1em;
+
     ul {
       position: sticky;
       top: 3.5rem;
       font-size: 0.9em;
+
       // 目录标题链接
-      & > li {
+      &>li {
         line-height: 2em;
         list-style: none;
         color: gray;
@@ -83,6 +113,7 @@ article {
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
+
         a {
           color: inherit;
         }
@@ -102,21 +133,25 @@ header.has-image {
   background-size: $feature-image-size;
   margin-bottom: 1em;
   padding: $padding-large 0;
+
   address {
     margin-top: 1em;
     color: rgba($feature-image-text-color, 0.9);
   }
-  & > * {
+
+  &>* {
     text-shadow: 0 0 0.2em #000, 0 0 0.3em gray;
   }
 }
 
 @media screen {
+
   // 超大屏幕
   @media (min-width: 2048px) {
     article {
       padding-left: 15%;
-      & > section {
+
+      &>section {
         width: 70%;
       }
     }
@@ -125,7 +160,8 @@ header.has-image {
   @media (max-width: 1366px) {
     article {
       padding-left: 5%;
-      & > section {
+
+      &>section {
         width: 73%;
         // @media (max-width: 640px) {
         //   width: 90%;
@@ -133,12 +169,14 @@ header.has-image {
       }
     }
   }
+
   @media (max-width: 1080px) {
     article {
       flex-direction: row-reverse;
       padding-left: 1%;
       padding-right: 1%;
-      & > section {
+
+      &>section {
         width: 78%;
         // @media (max-width: 640px) {
         //   width: 90%;
@@ -151,13 +189,16 @@ header.has-image {
   @media (max-width: 960px) {
     article {
       padding-left: 0;
-      & > section {
+
+      &>section {
         width: 85%;
+
         @media (max-width: 640px) {
           width: 90%;
         }
       }
-      & > aside {
+
+      &>aside {
         display: none;
       }
     }
