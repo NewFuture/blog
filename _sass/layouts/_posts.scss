@@ -59,9 +59,9 @@ article {
     }
 
     // 标题链接
-    &>h2>a,
-    &>h3>a,
-    &>h4>a {
+    & h2>a,
+    & h3>a,
+    & h4>a {
       @extend .body-link;
       color: transparent;
 
@@ -75,9 +75,9 @@ article {
       }
     }
 
-    &>h2:hover>a:empty,
-    &>h3:hover>a:empty,
-    &>h4:hover>a:empty {
+    & h2:hover>a:empty,
+    & h3:hover>a:empty,
+    & h4:hover>a:empty {
       color: $text-color;
     }
 
