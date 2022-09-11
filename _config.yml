@@ -39,7 +39,7 @@ theme_settings:
   twitter:
   wordpress:
   youtube:
-  weibo: LiuFuture
+  # weibo: LiuFuture
 
   # Scripts
   google_analytics: # Tracking ID, e.g. "UA-000000-01"

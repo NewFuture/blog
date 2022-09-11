@@ -51,7 +51,7 @@ describe("JSON.stringify basic type", () => {
 });
 ```
 
-<details open>
+<details open markdown="block">
 
 ### 内置 matcher
 
@@ -129,9 +129,9 @@ test("the data is ok", (done) => {
 });
 ```
 
-<details open>
+<details open markdown="block">
 
-jest 测试异步函数支持两种方式
+### jest 测试异步函数支持两种方式
 
 -   传统的异步参数回调: `it('callback',(done:(err?:any)=>void)=>{})`l
 -   返回一个 Promise (async/await 是一种特殊的 Promise 写法): `it('promise',():Prmose<any>=>{})`;
@@ -270,8 +270,8 @@ test("returns useTestPromise", async () => {
      title="test-async-hook-update"
      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
    ></iframe>
-   
-<details>
+
+<details markdown="block">
 
 [React Hooks Testing Library](https://react-hooks-testing-library.com/) 提供了更为丰富的 API
 
