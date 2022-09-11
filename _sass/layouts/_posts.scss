@@ -74,10 +74,11 @@ article {
       }
     }
 
-    &>h2:hover>a,
-    &>h3:hover>a,
-    &>h4:hover>a {
+    &>h2:hover>a:empty,
+    &>h3:hover>a:empty,
+    &>h4:hover>a:empty {
       color: $text-color;
+      margin-left: -1.5em;
     }
 
     &>h2 {
@@ -89,9 +90,7 @@ article {
       margin-top: 0;
       padding-top: 2rem;
     }
-
   }
-
 
   // 文章侧边栏
   &>aside {
