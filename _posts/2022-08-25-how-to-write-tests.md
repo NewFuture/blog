@@ -2,7 +2,7 @@
 layout: post
 title: How to write tests
 subtitle: 前端测试基础
-private: true
+private: false
 feature-img: /assets/img/how-to-write-tests/jasmine-vs-jest-vs-mocha.png
 tags:
     - test

@@ -62,23 +62,34 @@ article {
     & h2>a,
     & h3>a,
     & h4>a {
-      @extend .body-link;
-      color: transparent;
+      &:empty {
+        ::after {
+          // 标题链接样式
+          color: transparent;
+          margin-left: -1.5em;
+          font-size: 0.75em;
+          content: "🔗";
+          opacity: 0;
+          transition-property: opacity, font-size;
+          transition-duration: 0.8s, 1s;
+        }
 
-      &:empty::after {
-        margin-left: -1.5em;
-        content: "🔗";
-      }
-
-      &:empty:hover::after {
-        color: $link-color;
+        &:hover::after {
+          // 悬浮链接样式
+          color: $link-color;
+          opacity: 1;
+          font-size: 1em;
+        }
       }
     }
 
-    & h2:hover>a:empty,
-    & h3:hover>a:empty,
-    & h4:hover>a:empty {
-      color: $text-color;
+    & h2,
+    & h3,
+    & h4 {
+      &:hover>a:empty {
+        // 悬浮标题样式
+        opacity: 0.5;
+      }
     }
 
     &>h2 {
