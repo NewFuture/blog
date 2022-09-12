@@ -15,29 +15,15 @@ theme_settings:
 
   header_text_feature_image:
   footer_text: >
-    <i class="fa fa-edit"></i> with <i class="fa fa-heart"></i> by <a href="https://newfuture.cc">NewFuture</a>
+    <i class="iconfont i-edit"></i> with <i class="iconfont i-heart"></i> by <a href="https://newfuture.cc">NewFuture</a>
 
   # Icons
   rss: false
   email_address: "blog@newfuture.cc" # Full email address, e.g. "sam@example.com"
-  behance:
-  bitbucket:
-  dribbble:
-  facebook:
-  flickr:
-  gitlab:
   github: "NewFuture"
-  google_plus:
-  instagram:
   linkedin: # Full URL
-  pinterest:
   reddit:
-  soundcloud:
-  stack_exchange: # Full URL
-  steam:
-  tumblr:
   twitter:
-  wordpress:
   youtube:
   # weibo: LiuFuture
 

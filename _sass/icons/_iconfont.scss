@@ -1,0 +1,47 @@
+@font-face {
+  font-family: "iconfont";
+  /* Project id 3643985 */
+  src: url('/assets/fonts/iconfont.woff2') format('woff2'),
+    url('/assets/fonts/iconfont.woff') format('woff'),
+    url('/assets/fonts/iconfont.ttf') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 1em;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.i-search:before {
+  content: "\d83d";
+}
+
+.i-edit:before {
+  content: "\270e";
+}
+
+.i-link:before {
+  content: "\203b";
+}
+
+.i-right:before {
+  content: "\2192";
+}
+
+.i-left:before {
+  content: "\2190";
+}
+
+.i-mail-fill:before {
+  content: "\2709";
+}
+
+.i-github-fill:before {
+  content: "\47";
+}
+
+.i-heart:before {
+  content: "\2665";
+}

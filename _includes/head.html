@@ -5,16 +5,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	{% comment %} CSS {% endcomment %}
 	<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}"/>
-	{% comment %} Font Awesome 字体 {% endcomment %}
-	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 	{% comment %} SEO 链接 {% endcomment %}
 	<link rel="canonical" href="{{ page.url | replace:'index.html','' | relative_url }}"/>
 	{% comment %} RSS {% endcomment %}
 	<link rel="alternate" type="application/atom+xml" title="{{ site.theme_settings.title }}" href="{{ '/feed.xml' | relative_url }}" />
-	{% if site.theme_settings.google_fonts %}
-	{% comment %} Google Fonts {% endcomment %}
-	<link href="//fonts.googleapis.com/css?family={{ site.theme_settings.google_fonts }}" rel="stylesheet" type="text/css">
-	{% endif %}
 	{% if site.theme_settings.katex or page.katex and page.id %}
 	{% comment %} KaTeX {% endcomment %}	
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9tPv11A+glH/on/wEu99NVwDPwkMQESOocs/ZGXPoIiLE8MU/qkqUcZ3zzL+6DuH" crossorigin="anonymous">
