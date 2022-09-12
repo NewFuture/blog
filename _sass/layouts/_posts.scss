@@ -63,12 +63,15 @@ article {
     & h3,
     & h4 {
       &>a:empty {
-        
+
         &::after {
           // 标题链接样式
+          font-family: "iconfont" !important;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
           margin-left: -1.5em;
           font-size: 0.75em;
-          content: "🔗";
+          content: "\203b";
           opacity: 0;
           transition-property: opacity, font-size;
           transition-duration: 0.5s;
@@ -77,6 +80,7 @@ article {
         &:hover {
           // 悬浮链接样式
           text-decoration: none;
+
           &::after {
             color: $link-color;
             opacity: 1 !important;
