@@ -214,7 +214,8 @@ test("returns useTestProps", () => {
 
 ```ts
 import React from "react";
-import { act, waitFor, renderHook } from "@testing-library/react"; // React Testing Library Version>= 13.0
+// React Testing Library Version>= 13.0
+import { act, waitFor, renderHook } from "@testing-library/react";
 
 const useTestPromise = () => {
     const [name, setName] = React.useState("");
@@ -245,7 +246,8 @@ test("returns useTestPromise", async () => {
 
 ```ts
 import React from "react";
-import { renderHook } from "@testing-library/react-hooks"; // React Hooks Testing Library
+// React Hooks Testing Library (old version)
+import { renderHook } from "@testing-library/react-hooks";
 
 const useTestPromise = () => {
     const [name, setName] = React.useState("");
@@ -294,11 +296,13 @@ a live demo for hook update tests
 -   use `@testing-library/react` to `render`
 -   fireEvent 触发用户操作事件
 
-### basic render #{render-components}
+### basic render {#render-components}
 
 ```tsx
-import "@testing-library/jest-dom"; // add custom jest matchers from jest-dom, （可在setup中全局导入）
-import { render, screen } from "@testing-library/react"; // import react-testing methods
+// add custom jest matchers from jest-dom, （可在setup中全局导入）
+import "@testing-library/jest-dom";
+// import react-testing methods
+import { render, screen } from "@testing-library/react";
 
 // 待测试组件
 const Test = () => <div data>test</div>;
