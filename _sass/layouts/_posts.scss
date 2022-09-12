@@ -63,7 +63,7 @@ article {
     & h3>a,
     & h4>a {
       &:empty {
-        ::after {
+        &::after {
           // 标题链接样式
           color: transparent;
           margin-left: -1.5em;
