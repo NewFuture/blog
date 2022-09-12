@@ -59,10 +59,10 @@ article {
     }
 
     // 标题链接
-    & h2>a,
-    & h3>a,
-    & h4>a {
-      &:empty {
+    & h2,
+    & h3,
+    & h4 {
+      &>a:empty {
         &::after {
           // 标题链接样式
           color: transparent;
@@ -74,12 +74,14 @@ article {
           transition-duration: 0.5s;
         }
 
-        &:hover::after {
+        &:hover {
           // 悬浮链接样式
-          color: $link-color;
           text-decoration: none;
-          opacity: 1;
-          font-size: 0.9em;
+          &::after {
+            color: $link-color;
+            opacity: 1;
+            font-size: 0.9em;
+          }
         }
       }
     }
@@ -87,8 +89,8 @@ article {
     & h2,
     & h3,
     & h4 {
-      &:hover>a:empty {
-        // 悬浮标题样式
+      &:hover>a:empty::after {
+        // 悬浮标题时，锚点样式
         opacity: 0.5;
       }
     }
