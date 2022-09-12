@@ -15,7 +15,7 @@ theme_settings:
 
   header_text_feature_image:
   footer_text: >
-    <i class="iconfont i-edit"></i> with <i class="iconfont i-heart"></i> by <a href="https://newfuture.cc">NewFuture</a>
+    <i class="iconfont">✎</i> with <i class="iconfont">♥</i> by <a href="https://newfuture.cc">NewFuture</a>
 
   # Icons
   rss: false

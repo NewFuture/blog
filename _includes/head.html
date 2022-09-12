@@ -5,6 +5,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	{% comment %} CSS {% endcomment %}
 	<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}"/>
+	<link rel="preload" href="{{ '/assets/fonts/iconfont.woff2' | relative_url }}" as="font" type="font/woff2"/>
+	
 	{% comment %} SEO 链接 {% endcomment %}
 	<link rel="canonical" href="{{ page.url | replace:'index.html','' | relative_url }}"/>
 	{% comment %} RSS {% endcomment %}
