@@ -71,14 +71,15 @@ article {
           content: "🔗";
           opacity: 0;
           transition-property: opacity, font-size;
-          transition-duration: 0.8s, 1s;
+          transition-duration: 0.5s;
         }
 
         &:hover::after {
           // 悬浮链接样式
           color: $link-color;
+          text-decoration: none;
           opacity: 1;
-          font-size: 1em;
+          font-size: 0.9em;
         }
       }
     }
