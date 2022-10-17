@@ -143,9 +143,6 @@ import logo from "./assets/logo.png";
 
 如`<rootDir>/__mocks__/lodash.js` 会自动替换 node_modules 里的`lodash` 包
 
-{% highlight js %}
-{% include_relative "../code/how-to-mock-in-jest/__mocks__/lodash.js" %}
-{% endhighlight %}
 
 
 ### 项目文件,同名目录下，调用 jest.mock 后会自动替换
