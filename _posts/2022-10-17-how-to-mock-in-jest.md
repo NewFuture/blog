@@ -1,8 +1,7 @@
 ---
 layout: post
 title: How to mock in jest test (advanced)
-subtitle: 测试进阶
-private: true
+subtitle: jest测试中如何进行mock(测试进阶)
 tags:
     - test
 ---
@@ -144,6 +143,11 @@ import logo from "./assets/logo.png";
 
 如`<rootDir>/__mocks__/lodash.js` 会自动替换 node_modules 里的`lodash` 包
 
+{% highlight js %}
+{% include_relative ../code/how-to-mock-in-jest/__mocks__/lodash.js%}
+{% endhighlight %}
+
+
 ### 项目文件,同名目录下，调用 jest.mock 后会自动替换
 
 `jest.mock('./path/local/file')`会自动使用 `./path/local/__mocks__/file.ts` 替换
@@ -192,12 +196,12 @@ await msTeams.getAuthToken(); // spy-token
 
 ## `jest.fn`
 
-[jest.fn 创建一个mock 函数用于测试](https://jestjs.io/docs/mock-function-api)
+[jest.fn 创建一个 mock 函数用于测试](https://jestjs.io/docs/mock-function-api)
 
 与`jest.mock`和`jest.spyOn`不同,`jest.fn`用来生成一个`函数`用来测试。
 
-* mock 或者 spyOn的实现
-* 测试回调函数的调用
+-   mock 或者 spyOn 的实现
+-   测试回调函数的调用
 
 ### mock 实现
 
@@ -218,7 +222,7 @@ test("test incCallback", () => {
 
     expect(action()).toBe(0);
     expect(f).toBeCalledWith(0); // 检查函数调用参数
-})
+});
 ```
 
 ## `mock provider`
@@ -226,6 +230,6 @@ test("test incCallback", () => {
 一些较为复杂的第三方库如 `@apollo/client`,提供了`MockedProvider`替换测试内容
 
 ```tsx
-import { MockedProvider } from '@apollo/client/testing';
-rend(<MockedProvider mocks={[]}>content detail</MockedProvider>)
+import { MockedProvider } from "@apollo/client/testing";
+rend(<MockedProvider mocks={[]}>content detail</MockedProvider>);
 ```
