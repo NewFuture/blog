@@ -1,7 +1,7 @@
 # SITE CONFIGURATION
 baseurl: ""
 url: "https://blog.newfuture.cc/"
-
+incremental: true
 # THEME-SPECIFIC CONFIGURATION
 theme_settings:
   # Meta
@@ -22,9 +22,6 @@ theme_settings:
   email_address: "blog@newfuture.cc" # Full email address, e.g. "sam@example.com"
   github: "NewFuture"
   linkedin: # Full URL
-  reddit:
-  twitter:
-  youtube:
   # weibo: LiuFuture
 
   # Scripts
@@ -36,7 +33,7 @@ theme_settings:
   # Localization strings
   str_follow_on: "关注我 Follow on"
   str_rss_follow: "Follow RSS feed"
-  str_email: "发邮件Email"
+  str_email: "发邮件 Email"
   str_next_post: "Next post"
   str_previous_post: "Previous post"
   str_next_page: "下一页(Next)"
@@ -72,7 +69,7 @@ kramdown:
 highlighter: rouge
 sass:
   sass_dir: _sass
-  style: :compressed
+  style: compressed
 
 plugins:
   - jekyll-paginate
