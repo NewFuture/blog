@@ -143,8 +143,6 @@ import logo from "./assets/logo.png";
 
 如`<rootDir>/__mocks__/lodash.js` 会自动替换 node_modules 里的`lodash` 包
 
-
-
 ### 项目文件,同名目录下，调用 jest.mock 后会自动替换
 
 `jest.mock('./path/local/file')`会自动使用 `./path/local/__mocks__/file.ts` 替换
@@ -211,6 +209,7 @@ jest.spyOn(msTeams, "getAuthToken").mockImplementation(authFn);
 ### 测试回调
 
 ```ts
+// https://github.com/NewFuture/blog/blob/master/code/how-to-mock-in-jest/src/com/incCallback.ts
 import { incCallback } from "../src/com/incCallback";
 
 test("test incCallback", () => {
@@ -228,5 +227,5 @@ test("test incCallback", () => {
 
 ```tsx
 import { MockedProvider } from "@apollo/client/testing";
-rend(<MockedProvider mocks={[]}>content detail</MockedProvider>);
+render(<MockedProvider mocks={[]}>content detail</MockedProvider>);
 ```
