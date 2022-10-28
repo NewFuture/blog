@@ -79,9 +79,12 @@ tags:
 
 -   触发更快(分钟级触发变成 ms 级触发), Function App 热启动状态下，图片自动处理是秒级的完成，冷启动状态下分钟级完成。
 -   基本不会重新触发(event create 和 update 是两个事件, Blob Trigger 是一个事件)
--   浏览和请求数骤减(1000 倍变化)
+-   请求数骤减(1000 倍变化)
+-   Blob 和 Log 账单骤减(50 倍)(查询数量降低+log 数量和密度降低+写入数减少)
 
 ![query count](/assets/img/azure-blob-trigger-polling/query-count.png)
+
+![cost count](/assets/img/azure-blob-trigger-polling/coast-count.png)
 
 ## 启发
 
