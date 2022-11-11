@@ -137,6 +137,19 @@ if (stickers.Count < skip + count)
 
 ## Card 生成优化
 
+Card 生成最开始使用 json 文件，由于文件 IO 时间波动较大.
+
+1. 优化一 Cache json 文件 （<1ms, 波动大）
+2. 优化二 完全使用 Class + Object 来声明卡片内容(<1 微秒级转换,稳定)。
+
+详细说明和对比 <https://blog.newfuture.cc/performance-of-adaptivecard-template-rendering/>
+
 ## DNS 优化
+
+从 Bot 的 我们 server 直接的调用基本区间于两这直接的网络连接状况, 二者都在 Azure 上(Bot 可能从不同 Region 发起,默认走 Azure 网络，基本比较稳定，但不可控)。
+
+还有一步，DNS 解析可能存出现高延迟的情况。
+(由于 `stickers-xxx.newfuture.cc` 是用的境内 DNS 服务商, 在不同的 Azure 上查询 DNS 不能保证快速响）,
+因此在 Bot handler 配置 `stickers-xxx.azurewebsites.net` 可以保证更稳定更快的解析。
 
 ## 优化结果
