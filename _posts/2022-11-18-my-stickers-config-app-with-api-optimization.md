@@ -43,7 +43,7 @@ tags:
 
 第一次打开这个 APP，这个 URL 从来没有发送过，请求的情况下，这些准备阶段很可能会耗时比较长(X00ms 到 1s,极端情况下会更长.)
 
-`preconnect` 可以在下载 JS 的同时取提前建立连接
+[`preconnect`](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types/preconnect) 可以在下载 JS 的同时取提前建立连接
 
 ```html
 <link rel="preconnect" href="https://stickers-test-server.azurewebsites.net" crossorigin />
@@ -51,7 +51,18 @@ tags:
 
 ![preconnect](/assets/img/my-stickers-config-app-with-api-optimization/waterfall-preconnect.png)
 
-可以发现 6z 的 connect 和 ssl 已经在 JS 下载阶段就完成，JS 执行后立即就开始了 request.
+可以发现 6 的 connect 和 ssl 已经在 JS 下载阶段就完成，JS 执行后立即就开始了 request.
+
+注意`crossorigin`属性
+
+> https://crenshaw.dev/preconnect-resource-hint-crossorigin-attribute/ 
+> https://stackoverflow.com/questions/74144075/why-crossorigin-attribute-matters-for-preconnect-links
+>
+> *  用于页面标签(加载 js/img 等)如果标签有`crossorigin`属性则保持一致;
+> *  预先连接跨域的`<script type=module>` 和跨域字体文件 必须使用`crossorigin`
+> *  对于 fetch or XHR 请求: withCredentials 模式(带 cookie 认证信息) 使用`crossorigin=use-credentials` 否则使用`crossorigin`
+
+### CORS Simple Request
 
 ### More
 
