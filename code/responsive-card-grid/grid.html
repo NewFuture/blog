@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Flex Grid</title>
+        <style>
+            [role="list"]{
+                width: 100vw;
+            }
+            [role="listitem"] {
+                font-size: 60px;
+                text-align: center;
+                background: gainsboro;
+            }
+            html,body{
+                margin: 0;
+                padding: 0;
+            }
+        </style>
+        <style>
+            .container {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                /* flex-wrap: wrap; */
+            }
+            .item {
+                /* margin: 1vw; */
+                /* width: 23vw; */
+                /* height: 23vw; */
+            }
+        </style>
+    </head>
+    <body>
+        <div role="list" class="container">
+            <div class="item" role="listitem">😄</div>
+            <div class="item" role="listitem">😄</div>
+            <div class="item" role="listitem">😄</div>
+            <div class="item" role="listitem">😄</div>
+            <div class="item" role="listitem">😄</div>
+            <div class="item" role="listitem">😄</div>
+            <div class="item" role="listitem">😄</div>
+            <div class="item" role="listitem">😄</div>
+            <div class="item" role="listitem">😄</div>
+            <div class="item" role="listitem">😄</div>
+            <div class="item" role="listitem">😄</div>
+            <div class="item" role="listitem">😄</div>
+            <div class="item" role="listitem">😄</div>
+            <div class="item" role="listitem">😄</div>
+            <div class="item" role="listitem">😄</div>
+            <div class="item" role="listitem">😄</div>
+            <div class="item" role="listitem">😄</div>
+            <div class="item" role="listitem">😄</div>
+            <div class="item" role="listitem">😄</div>
+        </div>
+    </body>
+</html>
