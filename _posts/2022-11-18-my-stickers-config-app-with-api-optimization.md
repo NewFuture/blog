@@ -98,11 +98,54 @@ tags:
 -   http2 push (Azure CDN 不支持): 下载 html 时主动推送 js 文件。
 -   http3 (Azure CDN 不支持): UDP 可以跳过握手阶段。
 
+### 首次打开效果
+
+测试过多次(即 CDN 和 DNS 预热过)
+![first run](/assets/img/my-stickers-config-app-with-api-optimization/first-run.png)
+
+|    标志     | 耗时  | 说明                                           |
+| :---------: | :---: | :--------------------------------------------- |
+| First Byte  | 0.2s  | 接收到服务器端响应(反应准备阶段耗时)           |
+|     FCP     | 0.35s | 第一次渲染有效内容 (用户看见 loading 转圈)     |
+| Speed Index | 1.5 s | 用户页面渲染完成 (显示列表文字,但图片加载完成) |
+|     LCP     | 2.68s | 全部内容都渲染,所有图片都完全加载完成          |
+
 ## 再次打开
 
 -   资源文件永久缓存
 -   图片自动压缩+永久缓存
 -   Client Cache
+
+### js 文件永久缓存
+
+由于 js 使用了内容 hash,内容变化后文件名会发生变化,因此 js 文件可以永久缓存,不需要额外的 http 304 确认。
+
+详细查看 [静态网站优化](/my-stickers-static-website-optimization/)
+
+### 图片自动压缩+永久缓存
+
+对于用户上传的图片，使用统一的压缩处理，并且添加 `public,max-age=15552000,immutable` 缓存控制,让客户都可以永久缓存。
+
+### 客户端 Client Cache
+
+为了让内容尽快的显示，会将列表缓存到本地`localStorage`,在用户下次打开的时候先显示本地缓存(此时不可编辑),同时去 server 端同步最新的列表。
+
+client 使用了`useSWR`来管理同步 server 端的 list.
+在 fallback 的时使用本地缓存内容。
+
+
+### 二次打开效果
+
+重新打开是在,刚关闭弹窗, 再次打开的情况，所有缓存都存在。
+
+![re run](/assets/img/my-stickers-config-app-with-api-optimization/re-run.png)
+
+|    标志     | 耗时  | 说明                                           |
+| :---------: | :---: | :--------------------------------------------- |
+| First Byte  | 0.15s | 接收到服务器端响应(反应准备阶段耗时)           |
+|     FCP     | 0.32s | 第一次渲染有效内容 (用户看见 loading 转圈)     |
+| Speed Index | 0.45s | 用户页面渲染完成 (显示列表文字,但图片加载完成) |
+|     LCP     | 0.6s  | 全部内容都渲染,所有图片都完全加载完成          |
 
 ## 上传
 
