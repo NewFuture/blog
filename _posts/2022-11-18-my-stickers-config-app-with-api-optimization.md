@@ -46,7 +46,14 @@ tags:
 [`preconnect`](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types/preconnect) 可以在下载 JS 的同时取提前建立连接
 
 ```html
-<link rel="preconnect" href="https://stickers-test-server.azurewebsites.net" crossorigin />
+<!-- API -->
+<link
+    rel="preconnect"
+    href="https://stickers-test-server.azurewebsites.net"
+    crossorigin
+/>
+<!-- 图片 -->
+<link rel="preconnect" href="https://stickers.newfuture.cc" />
 ```
 
 ![preconnect](/assets/img/my-stickers-config-app-with-api-optimization/waterfall-preconnect.png)
@@ -55,21 +62,41 @@ tags:
 
 注意`crossorigin`属性
 
-> https://crenshaw.dev/preconnect-resource-hint-crossorigin-attribute/ 
-> https://stackoverflow.com/questions/74144075/why-crossorigin-attribute-matters-for-preconnect-links
+> https://crenshaw.dev/preconnect-resource-hint-crossorigin-attribute/ > https://stackoverflow.com/questions/74144075/why-crossorigin-attribute-matters-for-preconnect-links
 >
-> *  用于页面标签(加载 js/img 等)如果标签有`crossorigin`属性则保持一致;
-> *  预先连接跨域的`<script type=module>` 和跨域字体文件 必须使用`crossorigin`
-> *  对于 fetch or XHR 请求: withCredentials 模式(带 cookie 认证信息) 使用`crossorigin=use-credentials` 否则使用`crossorigin`
+> -   用于页面标签(加载 js/img 等)如果标签有`crossorigin`属性则保持一致;
+> -   预先连接跨域的`<script type=module>` 和跨域字体文件 必须使用`crossorigin`
+> -   对于 fetch or XHR 请求: withCredentials 模式(带 cookie 认证信息) 使用`crossorigin=use-credentials` 否则使用`crossorigin`
 
-### CORS Simple Request
+### CORS preflight
+
+再来看具体的数据请求，会发现实际上一次确 query 会发现两条 HTTP request。
+
+在 GET 请求之前会有一个 Options 请求确认`CORS`信息 (这个测试中大概 900ms)
+![preflight](/assets/img/my-stickers-config-app-with-api-optimization/preflight-timeline.png)
+
+![preflight in waterfall](/assets/img/my-stickers-config-app-with-api-optimization/waterfall-preflight.png)
+
+```timeline
+/me/stickers OPTIONS 200
+/me/stickers GET 200
+```
+
+要想避免第一个`OPTIONS`请求,两种方式
+
+-   避免跨域使用同一个域名 (推荐, 可以使用 AFD 之类动态 CDN 的)
+-   使请求变成 [Simple Requests](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#simple_requests) 跳过 preflight 预检 (奇技淫巧)
+
+由于需要认证,这里使用的是把 `Authorization` 隐藏在 `Content-Language` 中.
+
+> 这种方式存在兼容性的风险,谨慎使用。
 
 ### More
 
 -   使用 Azure Front Door (价格更高): 同一个域名,避免跨域预检和客户都链接，并提高 API 网络的稳定性；
 -   CDN 预取 CDN preload (需要 Premium 版): 提前分发到边缘节点。
 -   http2 push (Azure CDN 不支持): 下载 html 时主动推送 js 文件。
--   http3 (UDP) 可以跳过握手阶段。
+-   http3 (Azure CDN 不支持): UDP 可以跳过握手阶段。
 
 ## 再次打开
 

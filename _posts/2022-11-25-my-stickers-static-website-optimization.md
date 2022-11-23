@@ -2,6 +2,7 @@
 layout: post
 title: My Stickers Static Website Optimization
 subtitle: 表情包纯静态网站优化
+private: true
 tags:
     - Optimization
 ---
