@@ -2,7 +2,6 @@
 layout: post
 title: My Stickers Config App with API Optimization
 subtitle: 表情包应用管理页子应用优化
-private: true
 tags:
     - Optimization
 ---
@@ -13,7 +12,7 @@ tags:
 -   Preconnect 加快 Server 请求
 -   CORS Simple Request
 
-![default waterfall for static site](/assets/img/my-stickers-config-app-with-api-optimization/waterfall-default.png)
+![default waterfall for static site](/assets/img/my-stickers-config-app-optimization/waterfall-default.png)
 
 其中:
 
@@ -30,7 +29,7 @@ tags:
 
 使用 http2 可以将四个合并为一个 TCP 连接。
 
-![http2 + cdn](/assets/img/my-stickers-config-app-with-api-optimization/waterfall-http2.png)
+![http2 + cdn](/assets/img/my-stickers-config-app-optimization/waterfall-http2.png)
 
 可以看到 html 之后的 js 没有 connect 和 ssl 握手阶段，复用了同一个连接。
 
@@ -39,7 +38,7 @@ tags:
 可以发现 6 调用 API(另外一个域名)的请求在，js 执行完之后才开始。
 这个过程又重新进行 DNS,建立 TCP,SSL 握手，然后发送请求。
 
-![https connection](/assets/img/my-stickers-config-app-with-api-optimization/first-request.png)
+![https connection](/assets/img/my-stickers-config-app-optimization/first-request.png)
 
 第一次打开这个 APP，这个 URL 从来没有发送过，请求的情况下，这些准备阶段很可能会耗时比较长(X00ms 到 1s,极端情况下会更长.)
 
@@ -56,7 +55,13 @@ tags:
 <link rel="preconnect" href="https://stickers.newfuture.cc" />
 ```
 
-![preconnect](/assets/img/my-stickers-config-app-with-api-optimization/waterfall-preconnect.png)
+HTTP HEADER 中
+
+```header
+Link: <https://stickers-api.newfuture.cc>;rel="preconnect";crossorigin, <https://stickers.newfuture.cc>;rel="preconnect"
+```
+
+![preconnect](/assets/img/my-stickers-config-app-optimization/waterfall-preconnect.png)
 
 可以发现 6 的 connect 和 ssl 已经在 JS 下载阶段就完成，JS 执行后立即就开始了 request.
 
@@ -73,9 +78,9 @@ tags:
 再来看具体的数据请求，会发现实际上一次确 query 会发现两条 HTTP request。
 
 在 GET 请求之前会有一个 Options 请求确认`CORS`信息 (这个测试中大概 900ms)
-![preflight](/assets/img/my-stickers-config-app-with-api-optimization/preflight-timeline.png)
+![preflight](/assets/img/my-stickers-config-app-optimization/preflight-timeline.png)
 
-![preflight in waterfall](/assets/img/my-stickers-config-app-with-api-optimization/waterfall-preflight.png)
+![preflight in waterfall](/assets/img/my-stickers-config-app-optimization/waterfall-preflight.png)
 
 ```timeline
 /me/stickers OPTIONS 200
@@ -101,7 +106,7 @@ tags:
 ### 首次打开效果
 
 测试过多次(即 CDN 和 DNS 预热过)
-![first run](/assets/img/my-stickers-config-app-with-api-optimization/first-run.png)
+![first run](/assets/img/my-stickers-config-app-optimization/first-run.png)
 
 |    标志     | 耗时  | 说明                                           |
 | :---------: | :---: | :--------------------------------------------- |
@@ -133,24 +138,24 @@ tags:
 client 使用了`useSWR`来管理同步 server 端的 list.
 在 fallback 的时使用本地缓存内容。
 
-
 ### 二次打开效果
 
-重新打开是在,刚关闭弹窗, 再次打开的情况，所有缓存都存在。
+重新打开是在刚关闭弹窗, 再次打开的情况，所有缓存都存在。
 
-![re run](/assets/img/my-stickers-config-app-with-api-optimization/re-run.png)
+![re run](/assets/img/my-stickers-config-app-optimization/re-run.png)
 
-|    标志     | 耗时  | 说明                                           |
-| :---------: | :---: | :--------------------------------------------- |
-| First Byte  | 0.15s | 接收到服务器端响应(反应准备阶段耗时)           |
-|     FCP     | 0.32s | 第一次渲染有效内容 (用户看见 loading 转圈)     |
-| Speed Index | 0.45s | 用户页面渲染完成 (显示列表文字,但图片加载完成) |
-|     LCP     | 0.6s  | 全部内容都渲染,所有图片都完全加载完成          |
+|    标志     | 耗时  | 说明                                       |
+| :---------: | :---: | :----------------------------------------- |
+| First Byte  | 0.16s | 接收到服务器端响应(反应准备阶段耗时)       |
+|     FCP     | 0.32s | 第一次渲染有效内容 (用户看见 loading 转圈) |
+| Speed Index | 0.45s | 用户页面渲染完成 (显示列表框架和文字)      |
+|     LCP     | 0.6s  | 全部内容都渲染,所有图片都完全加载完成      |
 
 ## 上传
 
--   批量上传
--   上传限流
+为了方便上传,允许用户批量选择图片上传。
+
+-   上传限流(负优化)
 -   合并插入
 -   数据库 Bulk 插入
 
