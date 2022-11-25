@@ -168,6 +168,8 @@ client 使用了`useSWR`来管理同步 server 端的 list.
 
 `@fluentui/react-components` 底层使用`griffel`实现 css-in-js,使用[`@griffel/webpack-extraction-plugin`](https://griffel.js.org/react/css-extraction/with-webpack)可以将 css-in-js 转成 css.
 
+![extract progress](/assets/img/my-stickers-config-app-optimization/extract-style.png)
+
 [webpack 配置](https://github.com/NewFuture/my-stickers/blob/main/client-config-app/config-overrides.js#L20)
 
 ```bash
@@ -179,7 +181,7 @@ client 使用了`useSWR`来管理同步 server 端的 list.
 
 首页渲染的区别(webpagetest rerun 测试结果)
 
-> 交互的
+> 不止首次, 渲染样式变化或者添加新样式元素都会有明显影响。
 
 |   类型    |  css  | css-in-js |
 | :-------: | :---: | :-------- |
