@@ -1,6 +1,6 @@
 ---
 layout: post
-title: My Stickers Config App with API Optimization
+title: My Stickers Config App Optimization
 subtitle: 表情包应用管理页子应用优化
 tags:
     - Optimization
@@ -57,8 +57,10 @@ tags:
 
 HTTP HEADER 中
 
-```header
+```
+
 Link: <https://stickers-api.newfuture.cc>;rel="preconnect";crossorigin, <https://stickers.newfuture.cc>;rel="preconnect"
+
 ```
 
 ![preconnect](/assets/img/my-stickers-config-app-optimization/waterfall-preconnect.png)
@@ -142,7 +144,7 @@ client 使用了`useSWR`来管理同步 server 端的 list.
 
 重新打开是在刚关闭弹窗, 再次打开的情况，所有缓存都存在。
 
-![re run](/assets/img/my-stickers-config-app-optimization/re-run.png)
+![rerun](/assets/img/my-stickers-config-app-optimization/re-run.png)
 
 |    标志     | 耗时  | 说明                                       |
 | :---------: | :---: | :----------------------------------------- |
@@ -151,12 +153,35 @@ client 使用了`useSWR`来管理同步 server 端的 list.
 | Speed Index | 0.45s | 用户页面渲染完成 (显示列表框架和文字)      |
 |     LCP     | 0.6s  | 全部内容都渲染,所有图片都完全加载完成      |
 
-## 上传
+## CSS Extraction
 
-为了方便上传,允许用户批量选择图片上传。
+前面两部分主要是针对网络和延时,这部分优化主要是针对渲染时性能,主要针对低端设备。
 
--   上传限流(负优化)
--   合并插入
--   数据库 Bulk 插入
+整个管理 App 前端基于[`@fluentui/react-components`(FluentUI@V9)](https://react.fluentui.dev/)实现,虽然这个 APP 和简单，样式不太复杂(<2KB),但基础还存在大量样式(≈10KB)。
 
-https://timdeschryver.dev/blog/faster-sql-bulk-inserts-with-csharp#results
+几乎完全使用 `CSS-in-JS` 来实现样式。
+但是`CSS-in-JS`动态插入 styles,会降低 runtime 性能,[特别是 react 18 的并发渲染时性能](https://github.com/reactwg/react-18/discussions/110),
+
+> NOTE: Make sure you read the section "When to Insert `<style>` on The Client". If you currently inject style rules "during render", it could make your library VERY slow in concurrent rendering.
+
+在这里，为了避免这部影响,提高样式的渲染效率。将`css-in-js`,在打包的时候，提前转成 css 文件。([这是另外一框架,对二者性能比较](https://pustelto.com/blog/css-vs-css-in-js-perf/))
+
+`@fluentui/react-components` 底层使用`griffel`实现 css-in-js,使用[`@griffel/webpack-extraction-plugin`](https://griffel.js.org/react/css-extraction/with-webpack)可以将 css-in-js 转成 css.
+
+[webpack 配置](https://github.com/NewFuture/my-stickers/blob/main/client-config-app/config-overrides.js#L20)
+
+```bash
+ 128.22 kB  build\js\npm.e76254.js
+  43.97 kB   build\js\react.afedac.js
+  10.48 kB   build\css\style.4d8134.css [css]
+  10.41 kB   build\js\main.236929.js
+```
+
+首页渲染的区别(webpagetest rerun 测试结果)
+
+> 交互的
+
+|   类型    |  css  | css-in-js |
+| :-------: | :---: | :-------- |
+| Scripting | 74 ms | 90 ms     |
+|  Layout   | 40 ms | 33 ms     |
