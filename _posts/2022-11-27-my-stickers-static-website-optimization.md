@@ -2,7 +2,6 @@
 layout: post
 title: My Stickers Static Website Optimization
 subtitle: 表情包纯静态网站优化
-private: true
 tags:
     - Optimization
 ---
@@ -60,13 +59,52 @@ tags:
 
 预渲之后的页面，显示更快，而且没有渲染的卡顿。
 
-## lazy loading
+## 常规优化
 
-## 资源文件永久缓存
+### 图片 lazy loading
 
-## preload video
+首页有三屏内容显示。对于第二屏和第三屏的图片加上 `loading="lazy"` 可以降低图片的下载的优先级延迟加载这部分图片。把更多的带宽留给首屏的图片和视频。
 
-https://www.webpagetest.org/
-https://pagespeed.web.dev/
+这样让首屏内容更快显示。
 
-https://status.sticker.newfuture.cc/
+### preload video
+
+### 缓存控制
+
+对于 JS 图片视频等文件，内容不会变，为了更有效的利用缓存，减少请求。
+
+`/`缓存头
+
+```
+Cache-Control: public,max-age=86400
+```
+
+HTML 页面可缓存一天(86400s).
+
+`xx.js`等资源文件缓存
+
+```
+Cache-Control: public,max-age=63072000,immutable
+```
+
+资源文件缓存 2 年,内容不可变(无需 server 确认)
+
+![cache settings](/assets/img/my-stickers-static-website-optimization/cache-setting.png)
+
+## DNS 和 CDN 的问题
+
+用上 CDN 并不能保证网站访问速度一定很快，冷启动可能同样会很慢。
+
+1. DNS 的时间消耗有些时候并不是可以忽略的,
+2. CDN 跨区域回源的时间可以能会很长.
+
+下面是[监测网站首页的响应时间](https://status.sticker.newfuture.cc/)(时间波动范围比较大和每次 DNS 状态和 CDN 装有关)
+
+![cache settings](/assets/img/my-stickers-static-website-optimization/connection-time.png)
+
+可以看到法国的节点,DNS 和 CDN 都处于冷启动状态,DNS 耗时 331 ms,CDN 下载耗时 928ms. 这些事件则不可忽略。
+
+## 分析工具
+
+-   <https://www.webpagetest.org/>
+-   <https://pagespeed.web.dev/>
