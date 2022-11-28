@@ -67,16 +67,39 @@ tags:
 
 这样让首屏内容更快显示。
 
+> 注意: 图片尽量设置宽带和高度
+
 ### preload video
 
+-   [Link Preload](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types/preload#browser_compatibility)
+
+```html
+<link rel="preload" href="/video/my-stickers-v2.mp4" as="video" />
+
+<!-- 
+    chrome 浏览器没有实现 as = video,
+    chrome 不支持 type
+-->
+<!-- <link rel="preload" href="/video/my-stickers-v2.mp4" as="video" type="video/mp4" /> -->
+```
+
+```
+Link: </video/my-stickers-v2.mp4>;as="video";rel="preload";
+```
+
 ### 缓存控制
+
+-   [Cache Control](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control)
+-   [Caching](https://developer.mozilla.org/en-US/docs/Web/HTTP/Caching#common_caching_patterns)
 
 对于 JS 图片视频等文件，内容不会变，为了更有效的利用缓存，减少请求。
 
 `/`缓存头
 
 ```
-Cache-Control: public,max-age=86400
+
+Cache-Control: max-age=86400
+
 ```
 
 HTML 页面可缓存一天(86400s).
@@ -84,12 +107,20 @@ HTML 页面可缓存一天(86400s).
 `xx.js`等资源文件缓存
 
 ```
-Cache-Control: public,max-age=63072000,immutable
+
+Cache-Control: max-age=63072000,immutable
+
 ```
 
-资源文件缓存 2 年,内容不可变(无需 server 确认)
+资源文件缓存 2 年,`immutable`内容不可变(无需 304 validation 确认)
 
 ![cache settings](/assets/img/my-stickers-static-website-optimization/cache-setting.png)
+
+### 效果
+
+[pagespeed (lighthouse)性能评分](https://pagespeed.web.dev/report?url=https%3A%2F%2Fsticker.newfuture.cc%2F&form_factor=desktop)
+
+![lighthouse score](/assets/img/my-stickers-static-website-optimization/lighthouse.png)
 
 ## DNS 和 CDN 的问题
 
@@ -108,3 +139,7 @@ Cache-Control: public,max-age=63072000,immutable
 
 -   <https://www.webpagetest.org/>
 -   <https://pagespeed.web.dev/>
+
+```
+
+```
