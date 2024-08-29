@@ -1,10 +1,14 @@
 ---
 layout: post
-title: 华为光猫(ONU) 跨运营商认证
-subtitle: 通过纯web界面修改不需要telnet或SSH
+title: 华为光猫(ONU) 在Web界面实现跨运营商认证
+subtitle: 不改公办界面通过管理员账户配置Loid/password/SN参数以实现跨运营认证使用
 private: true
 # feature-img: 
 ---
+
+现在华为光猫telnet提权比较困难，可以不改界面的的情况，通过管理员账户登录。 
+但是联通/电信界面只能修改Loid，无法配置password和修改SN。
+分析发现可以打开 http://192.168.1.1/html/amp/ontauth/password.asp 配置Loid/password/SN参数(不可改MAC)，以实现跨运营认证使用。
 
 ## 光猫认证的方式
 
