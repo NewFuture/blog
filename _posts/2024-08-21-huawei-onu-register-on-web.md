@@ -44,12 +44,13 @@ ONT认证就是光猫和运营商设备进行注册和通信, 除了移动使用
 ![ont-auth](/assets/img/huawei-onu-register-on-web/html-ont-password.png)
 
 
-管理员账户登录，**打开路径 <https://192.168.100.1:80/html/amp/ontauth/password.asp>**,即可修改。(截图为联通版界面)
+管理员账户登录，**打开路径 <http://192.168.1.1/html/amp/ontauth/password.asp>**,即可修改。(截图为联通版界面)
 
 ![ont-auth](/assets/img/huawei-onu-register-on-web/ontauth-password.png)
 
+## 补充
 
-### Web补充
+### JS提交
 
 这里是原始代码关于光猫认证的配置页，里面其实有更多的认证方式。
 
@@ -222,3 +223,8 @@ fetch("/html/amp/ontauth/set.cgi?x=InternetGatewayDevice.DeviceInfo&RequestFile=
   credentials: "include"
 })
 ```
+
+### 上行口的修改（待验证）
+
+分析固件可以通过 http://192.168.1.1/html/ssmp/mainupportcfg/mainupportconfig.asp 修改上行口，(暂时无法验证)
+
