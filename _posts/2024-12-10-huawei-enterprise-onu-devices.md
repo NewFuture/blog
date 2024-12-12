@@ -202,7 +202,7 @@ CPU是双核1.6GHz的CPU，内存1G，闪存256M。下行口是用FPGA控制的�
 
 2. 这些企业光猫在默认情况下，即使用路由模式，几乎不会占用CPU和内存。NAT和转发都硬件加速，CPU几乎不占用。CPU和内存占用更多的时候是被一些插件占用，在家用光猫最明显，部分企业的定制版也有一些插件。CPU的性能其实不必刻意追求，反而是功耗会反映出产热量，更影响设备的寿命和稳定性。
 
-![cpu usage](/assetsimg/huawei-enterprise-onu-devices/iperf-cpu.png)
+![cpu usage](/assets/img/huawei-enterprise-onu-devices/iperf-cpu.png)
 
 3. 通过网络上其它拆机和测评，明显感觉10GPON的猫和2.5G网口的猫，功耗较高，发热量也高。虽然散热改进少，也在正常温度范围内工作，但是塞进封闭弱电箱对于功耗会很在意。
 
