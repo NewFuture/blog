@@ -32,7 +32,7 @@ feature-img: /assets/img/huawei-enterprise-onu-devices/cover.png
 | [**B610-4E**](#b610-4e) | **2GHz** |  512M  | 4 GE    | 无重置孔 | **3.5~5W**   | 16 x 11 x 3    | GPON/EPON             |
 | [B610-S1](#b610-s1-4e)   |  1.6GHz  |  512M  | 4 GE    | 无电源键 | ~5W          | 12.5 x 9.5 x 3 | GPON/EPON             |
 | [**P603E**](#p603e)  | **2GHz** |  512M  | 8 GE    | 正常都有 | **3.2~5.6W** | 22 x 15 x 3.5  | GPON/EPON             |
-| [**P613E-S**](#p613e-s)  | **2GHz** |  512M  | 8GE(4供电)    | 正常都有 | **5W** | 22 x 15 x 3.5  | GPON/EPON             |
+| [P613E-S](#p613e-s)| **2GHz** |  512M  | 8GE(4供电)| 正常都有 | 5~9/78W | 22 x 15 x 3.5  | GPON/EPON             |
 | [P603E-E](#p603e-e)   |  1.6GHz  |  512M  | 8 GE    | 上行SFP  | 5~8W         | 22 x 15 x 3.5  | GPON/EPON + SFP       |
 | [P813E-E](#p813e-e)   | **2GHz** | **1G** | 8供电GE | 万兆SFP  | 10~14/138W   | 22 x 15 x 3.5  | XGS/XG/10GE-PON + SFP |
 | [B866-s1](#b866-s1)   |  1.6GHz  | **1G** | 4GE+USB | 下行PON  | 无数据       | 25 x 18 x 4.4  | XGPON/10GEPON         |
@@ -40,7 +40,7 @@ feature-img: /assets/img/huawei-enterprise-onu-devices/cover.png
 注: 
 * CPU都是双核, 2.GHz是`SD5182H RBI V100`（性能强功耗低）, 1.6GHz的是 `SD5182H RBC V100`。
 * 这里功耗使用的是官方提供的静态功耗和最大功耗数据（不包含电源）。
-* P813E-E最大功率包括不提供POE供电和提供POE两种场景。
+* P813E-E和p613E-S最大功率包括不提供POE供电和提供POE两种场景。
 * P603E,P603E-E默认都是GPON,P813E-E默认是XSG-PON,需要补全shell之后才能切换PON口模式。
 
 ### 系列和命名规则 
