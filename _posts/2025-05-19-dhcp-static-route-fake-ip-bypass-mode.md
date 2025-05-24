@@ -8,7 +8,7 @@ private: true
 
 ## 基本原理
 
-![FakeIP diagram](/assets/img/dhcp-static-route-fake-ip-bypass-mode/fakeip-diagram.svg)
+![FakeIP bypass](/assets/img/dhcp-static-route-fake-ip-bypass-mode/fakeip-bypass-diagram.svg)
 
 * 设备（手机PC等）
    * 使用旁路由（内网代理主机）进行 DNS 解析
@@ -151,3 +151,16 @@ private: true
 * dns-in 提供解析DNS
 * tproxy-in 提供透明代理
 
+### 流量处理过程
+
+* 直连请求处理过程
+   1. DNS 获取真实IP(IPv4或者IPv6)
+   2. 请求发送到网关(192.168.1)，
+   3. 网关经过**WAN**转发到互联网路由
+* 需要经过代理请求
+   1. DNS 返回FakeIP(192.18.x.x)
+   2. 请求发送到网关(192.168.1.1)，
+   3. 网关根据静态路由，经过**LAN** 转发到 内网代理主机(192.168.1.2)
+   4. 代理主机更具FakeIP 地址映射，查找域名和代理信息，请求代理服务器
+   5. 请求经过网关(192.168.1.1)，**WAN** 转发到互联网
+   6. 到达代理服务器，代理服务器解析域名和请求对应服务
