@@ -8,7 +8,7 @@ private: true
 
 ## 概述
 
-本文档详细介绍如何为荣耀 FUR-602 路由器刷入 U-Boot 固件。该路由器使用联发科 MT7981 芯片组，支持通过 Web 控制台和 Telnet 进行固件操作。
+本文档详细介绍如何为荣耀 FUR-602 路由器（联发科 MT7981 芯片），刷入 U-Boot 固件。通过 Web 控制台进行固件操作。
 
 ## ⚠️ 重要警告
 
@@ -27,9 +27,7 @@ private: true
 
 ### 软件要求
 
--   TFTP 服务器软件
--   SSH/Telnet 客户端
--   网络配置工具
+-   TFTP 服务器软件[可选]
 
 ### 网络配置
 
@@ -48,7 +46,7 @@ private: true
 3. 设置 TFTP 根目录用于存放备份文件
 4. 确保防火墙允许 TFTP 服务（端口 69）
 
-### 第二步：下载 U-Boot 固件[可选]
+### 第二步：下载 U-Boot 固件
 
 从官方仓库下载适用于 FUR-602 的 U-Boot 固件：<https://github.com/hanwckf/bl-mt798x/releases>
 
@@ -60,10 +58,13 @@ private: true
 
 打开浏览器，访问以下地址之一：
 
--   Web console http://192.168.2.1/cgi-bin/luci/admin/mtk/console
--   Telnet 开关(可选) http://192.168.2.1/cgi-bin/luci/api/system/cus_telnet
+- 登录路由器 http://192.168.2.1/
+- Web console http://192.168.2.1/cgi-bin/luci/admin/mtk/console
+<!-- -   Telnet 开关(可选) http://192.168.2.1/cgi-bin/luci/api/system/cus_telnet -->
 
-### 第二步：查看分区信息【可选】
+### 第二步：备份原始固件 [可选]
+
+### 2.1 查看分区信息
 
 在控制台中执行：
 
@@ -73,15 +74,13 @@ cat /proc/mtd
 
 这将显示设备的分区布局，确认各分区信息。
 
-### 第三步：备份原始固件【可选】（重要！）
-
-#### 3.1 备份完整 flash
+#### 2.2 备份完整 flash
 
 ```bash
 dd if=/dev/mtd0 | tftp -p -l - 192.168.2.2 -r honor_fur602_full_flash.bin
 ```
 
-#### 3.2 备份各个分区
+#### 2.3 备份各个分区
 
 ```bash
 # 备份BL2
@@ -107,15 +106,17 @@ dd if=/dev/mtd8 | tftp -p -l - 192.168.2.2 -r honor_fur602_mtd8_foxfs.bin
 
 **重要提示**：等待所有备份完成，确保 TFTP 服务器上已保存所有文件。
 
-### 第四步：下载 U-Boot 固件到设备
+### 第三步：下载 U-Boot 固件到设备
+
+#### 3.1 在路由器上下载uboot文件
 
 ```bash
 tftp -g 192.168.2.2 -r mt7981_honor_fur-602-fip-fixed-parts-multi-layout.bin -l /dev/shm/fip.bin
 ```
 
-> 当然也可也可以直接在控制台中使用 wget 命令下载
+> 也可以直接在控制台中使用 wget 命令从web服务器下载
 
-### 第五步：验证固件完整性
+#### 3.2 验证固件完整性
 
 ```bash
 md5sum /dev/shm/fip.bin
@@ -123,21 +124,22 @@ md5sum /dev/shm/fip.bin
 
 确认 MD5 值为：`216265cd96b784aac523e37d524bdc92`
 
-### 第六步：刷入 U-Boot 固件
+### 第四步：刷入 U-Boot 固件
 
 ```bash
 mtd write /dev/shm/fip.bin FIP
 ```
 
-### 第七步：重启设备
+### 第五步：重启验证
 
+#### 5.1 重启验证
 刷写完成后，重启路由器：
 
 ```bash
 reboot
 ```
 
-### 检查 U-Boot 启动
+#### 5.2 U-Boot 启动
 
 设备重启后，长按 reset 确认 U-Boot 正常加载。(注意 IP 地址可能会变更)
 
