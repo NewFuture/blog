@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 荣耀 FUR-602 路由器 U-Boot 刷机指南
-subtitle: Honor FUR-60x uboot
+subtitle: Honor FUR-60x backup and flash uboot
 private: true
 # feature-img: 
 ---
@@ -42,7 +42,7 @@ private: true
 
 ### 第一步：访问 Web 控制台
 
-打开浏览器，访问以下地址之一：
+打开浏览器，访问以下地址：
 
 - 登录路由器 http://192.168.2.1/ 也可能是(http://192.168.10.1)
 - Web console http://192.168.2.1/cgi-bin/luci/admin/mtk/console
