@@ -16,7 +16,7 @@ private: true
 
 可使用7z浏览直接编辑
 
-1. 修改 `/etc/rc.local` 开启telnet
+修改 `/etc/rc.local` 开启telnet
 
 ```diff
 # Put your custom commands here that should be executed once
