@@ -11,7 +11,7 @@ private: true
 路由器刷入集客固件之后，led红灯，无法正常控制。
 
 以康佳Komi-A31为例，使用798xuboot可以看到uboot灯是正常的,uboot源码中led灯的定义。
-```
+```dts
 leds {
 		compatible = "gpio-leds";
 
@@ -34,7 +34,8 @@ leds {
 
 ## 修改尝试 uboot (失败)
 解包老版本AP250md代码发现，固件代码中调用了 ap250md:green,ap250md:red等6个led设备
-```
+
+```sh
 ucidef_set_led_default "green" "GREEN" "ap250md:green" "1"
 ucidef_set_led_default "green2" "GREEN2" "ap250md:green2" "1"
 ucidef_set_led_default "green3" "GREEN3" "ap250md:green3" "1"
@@ -183,11 +184,18 @@ sha1sum fdt
 
 uboot重新写入此固件即可点亮绿灯和开关led.
 
-注意：本身的升级固件还有footprint md5 hash校验，文件修改导致校验不通过，不能直接升级。
+注意：本身的升级固件还有footprint 签名校验，文件修改导致校验不通过，不能直接升级。
+
 
 
 ## 彩蛋
-挂载 rootfs_data 分区
+
+### 自动打包工具
+
+* 修复工具(脚本) <https://github.com/NewFuture/jike-led>
+* 自动更新固件 <https://jike-led.newfuture.cc/>
+
+### 挂载 rootfs_data 分区
 ```
 mkdir /mnt/ubi4_data
 mount -t ubifs /dev/ubi0_4 /mnt/ubi4_data
