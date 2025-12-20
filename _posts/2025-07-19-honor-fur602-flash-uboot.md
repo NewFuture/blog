@@ -102,6 +102,10 @@ tftp -g 192.168.2.2 -r mt7981_honor_fur-602-fip-fixed-parts-multi-layout.bin -l 
 
 > 也可以直接在控制台中使用 wget 命令从web服务器下载
 
+```bash
+wegt http://the-web-server/mt7981_honor_fur-602-fip-fixed-parts-multi-layout.bin -o /dev/shm/fip.bin
+```
+
 #### 3.2 验证固件完整性
 
 ```bash

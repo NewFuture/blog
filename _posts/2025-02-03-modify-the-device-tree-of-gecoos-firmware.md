@@ -60,7 +60,7 @@ ucidef_set_led_default "red3" "RED3" "ap250md:red3" "0"
 最后用这个Windows下的比较方便 https://github.com/roma21515/DTB-CONVERTER
 解包之后自动反编译DTS文件发现led的定义与komi-a31的完全对不上
 
-```
+```dts
 leds {
     	compatible = "gpio-leds";
         green {
