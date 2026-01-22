@@ -1,7 +1,7 @@
 {
   "name": "how-to-mock-in-jest",
   "dependencies": {
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.23"
   },
   "devDependencies": {
     "@types/jest": "^29.1.2",
